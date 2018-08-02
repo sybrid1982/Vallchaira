@@ -41,18 +41,18 @@ $(document).ready( () => {
     showStore();
   
     let item = [
-   new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/small-wooden.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/viking-chair.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/wooden-throne.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/simple-design.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/scary-chair.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/metal-throne.jpg'),
-   new Item("Loks Dream", 500, "description", 'newimages/loks-dream.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/iron-throne.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/carved-chair.jpg'),
-   new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/small-wooden.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/viking-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/wooden-throne.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/simple-design.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/scary-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/metal-throne.jpg'),
+        new Item("Loks Dream", 500, "description", 'newimages/loks-dream.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/iron-throne.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/carved-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
     ];
 
    for (let i =0; i < item.length; i++) {
