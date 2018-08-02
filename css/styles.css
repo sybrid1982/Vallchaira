@@ -1,43 +1,40 @@
-   
 *{
     margin: 0;
     padding: 0;
-   }
-   body {
+}
+
+body {
     background-image: url(../images/background.jpg);
-   
-   }
-   
-   nav {
+}
+  
+nav {
     display: flex;
     justify-content: space-between;
     background: #1d1e1d;
     height:  70px;
     color: #e9d9c6;
     padding-top: 30px;
-   
-   }
-   
-   .logo {
+
+}
+
+.logo {
     font-size: 40px;
     padding-left: 20px;
     font-family: 'Fondamento', cursive;
-   }
-   
-   .cart {
+}
+  
+.cart {
     font-size: 25px;
     line-height: 45px;
     padding-right: 20px;
-   }
-   .cart img {
+}
+
+.cart img {
        height:70%;
        width:70%;
-   }
+}
 
-   .pic img{
-       height:80%;
-       width:80;   
-   }
-
-  
-  
+.pic img{
+    height:80%;
+    width:80%;  
+}
