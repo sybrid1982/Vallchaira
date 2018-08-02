@@ -24,6 +24,48 @@ $(document).ready( () => {
         }
     });
 
+    inames = []
+iqty = []
+iprice = []
+
+function addItem(){
+ 
+ inames.push(document.getElementById('name').value)
+ iqty.push(parseInt(document.getElementById('price').value))
+ iprice.push(parseInt(document.getElementById('qty').value))
+ 
+ displayCart()
+ 
+}
+
+function displayCart(){
+ 
+ 
+ cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
+ 
+ subtotal = 0;
+ total=0;
+ 
+ for (i=0; i<inames.length; i++){
+   subtotal = iqty[i] * iprice[i]
+   total+= subtotal + (subtotal*.06)
+   cartdata += "<tr><td>" + inames[i] + "</td><td>" + iprice[i] + "</td><td>" + iqty[i] + "</td><td>" + iqty[i] * iprice[i] + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
+ }
+ 
+ cartdata += '<tr><td></td><td></td><td></td>' + subtotal + '</td><td>' + total + '</td></tr></table>'
+ 
+ document.getElementById('cart').innerHTML = cartdata
+ 
+}
+
+
+function delElement(a){
+ inames.splice(a, 1);
+ iqty.splice(a, 1)
+ iprice.splice(a, 1)
+ displayCart()
+}
+
     $('body').on('click', '.cart #haul', ()=>{
         showCheckout()
     })
