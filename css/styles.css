@@ -3,8 +3,7 @@
     padding: 0;
 }
 
-body {
-    /* background-image: url(../images/background.jpg); */
+#haul{
     
 }
   
@@ -16,6 +15,7 @@ nav {
     color: #e9d9c6;
     padding-top: 30px;
     border-bottom: #8e7451 solid 10px;
+    
 }
 
 .logo {
@@ -23,13 +23,13 @@ nav {
     padding-left: 20px;
     font-family: 'Fondamento', cursive;
     text-shadow: 5px 5px 10px white;
+
 }
   
 .cart {
     font-size: 25px;
     line-height: 45px;
     padding-right: 20px;
-
 }
 
 .cart img {
@@ -79,6 +79,7 @@ body {
 #storeProducts .name {
     font-size:50px;
     color: #e9d9c6;
+    
 }
 
 #storePage {
