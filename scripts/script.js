@@ -128,13 +128,14 @@ $(document).ready(() => {
         new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
     ];
 
-    for (let i = 0; i < item.length; i++) {
-        $("#storeProducts").append(` <section>
-        <p>${item[i].name}</p>
-        <p>$${item[i].price}</p>
-        <p>${item[i].description}</p>
-        <img src = '${item[i].picture}'>
+   for (let i =0; i < item.length; i++) {
+   $("#storeProducts").append(` <section>
+        <p class="name">${item[i].name}</p>
+        <p class="price">$${item[i].price}</p>
+        <p class="description">${item[i].description}</p>
+        <img class="picture" src = '${item[i].picture}'>
         <button value='${[i]}'>Add To Cart</button>
+
    </section>`)
     }
 });
