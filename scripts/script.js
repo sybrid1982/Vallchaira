@@ -7,9 +7,6 @@ class Item {
       }
   }
 
-// for (let i=0; i< item.length; i++)
-// console.log(i)
-
 $(document).ready( () => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
@@ -24,28 +21,56 @@ $(document).ready( () => {
         }
     });
 
+
+    //when ship icon is clicked from products page, takes you to checkout page
+    $('body').on('click', '.cart #haul', ()=>{
+        showCheckout()
+    })
+
+
+    //When "products" is clicked from the checkout page, takes you back to the products page
+    $('body').on('click', '.home a', ()=>{
+        showStore()
+    } )
+
     const showStore = () => {
         $('section#storePage').show();
-        $('section#checkoutForm').hide();
+        $('section#checkoutForm').hide()
+        $('.home a').hide();
+        $('.cart #haul').show();
     }
 
     const showCheckout = () => {
-        $('#storePage').hide();
+        $('#storePage').hide()
+        $('.cart #haul').hide();
         $('#checkoutForm').show();
+        $('.home a').show();
     }
 
     showStore();
-  
-   let item1 = new Item("Iron Throne", 500, "description", 'images/fancy-chair.jpg')
-   let item2 = new Item("Iron Throne", 500, "description", 'images/hand-throne.jpg')
-   let item3 = new Item("Iron Throne", 500, "description", 'images/small-wooden.jpg')
-   let item4 = new Item("Iron Throne", 500, "description", 'images/viking-chair.jpg')
-   let item5 = new Item("Iron Throne", 500, "description", 'images/wooden-throne.jpg')
-   let item6 = new Item("Iron Throne", 500, "description", 'images/simple-design.jpg')
-   let item7 = new Item("Iron Throne", 500, "description", 'images/scary-chair.jpg')
-   let item8 = new Item("Iron Throne", 500, "description", 'images/metal-throne.jpg')
-   let item9 = new Item("Loks Dream", 500, "description", 'images/loks-dream.jpg')
-   let item10 = new Item("Iron Throne", 500, "description", 'images/iron-throne.jpg')
-   let item11 = new Item("Iron Throne", 500, "description", 'images/carved-chair.jpg')
-   let item12 = new Item("Iron Throne", 500, "description", 'images/braided-wood.jpg')
+  // array of item objects. Holds info including: name, price, description, and image link
+    let item = [
+   new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/small-wooden.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/viking-chair.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/wooden-throne.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/simple-design.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/scary-chair.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/metal-throne.jpg'),
+   new Item("Loks Dream", 500, "description", 'newimages/loks-dream.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/iron-throne.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/carved-chair.jpg'),
+   new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
+    ];
+
+//loops through item array to display all 12 items including name, price, description, and image
+   for (let i =0; i < item.length; i++) {
+   $("#storeProducts").append(` <section>
+        <p>${item[i].name}</p>
+        <p>$${item[i].price}</p>
+        <p>${item[i].description}</p>
+        <img src = '${item[i].picture}'>
+   </section>`)
+   }
 });
