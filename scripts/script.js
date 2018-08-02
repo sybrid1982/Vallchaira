@@ -14,8 +14,6 @@ $(document).ready( () => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
 
-
-
     $('body').on('change', '#checkoutForm input[type=radio]', (e)=> {
         if($(e.target).attr('id')==='cash') {
             $('#ccInfo').hide();
