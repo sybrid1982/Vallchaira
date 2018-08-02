@@ -40,12 +40,17 @@ class Cart {
             this.lineItems.push(new LineItem(item, quantity));
         }
         this.displayCart()
-    } 
+    }
+    delElement(i) {
+        this.lineItems.splice(i, 1);
 
-     displayCart() {
+        this.displayCart()
+    }
+
+    displayCart() {
 
 
-       let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
+        let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
 
         let subtotal = 0;
         let total = 0;
@@ -53,7 +58,7 @@ class Cart {
         for (let i = 0; i < this.lineItems.length; i++) {
             subtotal = this.lineItems[i].quantity * this.lineItems[i].item.price;
             total += subtotal + (subtotal * .06)
-            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" +this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
+            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" + this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td><button '>Delete</button></td></tr>"
         }
 
         cartdata += '<tr><td></td><td></td><td></td>' + subtotal + '</td><td>' + total + '</td></tr></table>'
@@ -61,6 +66,8 @@ class Cart {
         document.getElementById('cart').innerHTML = cartdata
 
     }
+
+
 }
 
 
@@ -82,24 +89,24 @@ $(document).ready(() => {
         }
     });
 
-  
-
-   
 
 
-    function delElement(a) {
-        inames.splice(a, 1);
-        iqty.splice(a, 1)
-        iprice.splice(a, 1)
-        displayCart()
-    }
 
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
     })
-    $('body').on('click', '#storeProducts > section > button', (e)=> {
+    $('body').on('click', '#storeProducts > section > button', (e) => {
         cart.addItem(item[$(e.target).val()], 1);
     })
+    $('body').on('click', 'table button', (e) => {
+        cart.delElement($(e.target).val());
+
+
+
+    })
+
+
+
 
     const showStore = () => {
         $('section#storePage').show();
