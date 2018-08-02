@@ -24,36 +24,36 @@ class LineItem {
 
 class Cart {
     constructor() {
-        lineItems = [];
+        this.lineItems = [];
     }
     addItem(item, quantity) {
         let newLineItem = null;
-        if (lineItems.length > 0) {
-            for (let i = 0; i < lineItems.length; i++) {
-                if (lineItems[i].compare(item)) {
-                    newLineItem = lineItems[i];
-                    lineItems[i].quantity += quantity;
+        if (this.lineItems.length > 0) {
+            for (let i = 0; i < this.lineItems.length; i++) {
+                if (this.lineItems[i].compare(item)) {
+                    newLineItem = this.lineItems[i];
+                    this.lineItems[i].quantity += quantity;
                 }
             }
         }
         if (!newLineItem) {
-            lineItems.push(new LineItem(item, quantity));
+            this.lineItems.push(new LineItem(item, quantity));
         }
-        displayCart()
+        this.displayCart()
     } 
 
      displayCart() {
 
 
-        cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
+       let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
 
-        subtotal = 0;
-        total = 0;
+        let subtotal = 0;
+        let total = 0;
 
-        for (i = 0; i < lineItems.length; i++) {
-            subtotal = lineItems[i].quantity * lineItems[i].item.price;
+        for (let i = 0; i < this.lineItems.length; i++) {
+            subtotal = this.lineItems[i].quantity * this.lineItems[i].item.price;
             total += subtotal + (subtotal * .06)
-            cartdata += "<tr><td>" + lineItems[i].item.name[i] + "</td><td>" +lineItems[i].item.price + "</td><td>" +lineItems[i].quantity + "</td><td>" +lineItems[i].quantity * lineItems[i].item.price + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
+            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" +this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
         }
 
         cartdata += '<tr><td></td><td></td><td></td>' + subtotal + '</td><td>' + total + '</td></tr></table>'
@@ -66,9 +66,11 @@ class Cart {
 
 
 
-$(document).ready( () => {
+$(document).ready(() => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
+
+    let cart = new Cart();
 
     $('body').on('change', '#checkoutForm input[type=radio]', (e) => {
         if ($(e.target).attr('id') === 'cash') {
@@ -80,20 +82,7 @@ $(document).ready( () => {
         }
     });
 
-
-    // inames = []
-    // iqty = []
-    // iprice = []
-
-    // function addItem() {
-
-    //     inames.push(document.getElementById('name').value)
-    //     iqty.push(parseInt(document.getElementById('price').value))
-    //     iprice.push(parseInt(document.getElementById('qty').value))
-
-    //     displayCart()
-
-    // }
+  
 
    
 
@@ -106,33 +95,24 @@ $(document).ready( () => {
     }
 
     $('body').on('click', '.cart #haul', () => {
-
         showCheckout()
     })
-
-
-    //When "products" is clicked from the checkout page, takes you back to the products page
-    $('body').on('click', '.home a', ()=>{
-        showStore()
-    } )
+    $('body').on('click', '#storeProducts > section > button', (e)=> {
+        cart.addItem(item[$(e.target).val()], 1);
+    })
 
     const showStore = () => {
         $('section#storePage').show();
-        $('section#checkoutForm').hide()
-        $('.home a').hide();
-        $('.cart #haul').show();
+        $('section#checkoutForm').hide();
     }
 
     const showCheckout = () => {
-        $('#storePage').hide()
-        $('.cart #haul').hide();
+        $('#storePage').hide();
         $('#checkoutForm').show();
-        $('.home a').show();
     }
 
     showStore();
 
-  // array of item objects. Holds info including: name, price, description, and image link
     let item = [
         new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
         new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
@@ -148,15 +128,13 @@ $(document).ready( () => {
         new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
     ];
 
-
-//loops through item array to display all 12 items including name, price, description, and image
-   for (let i =0; i < item.length; i++) {
-   $("#storeProducts").append(` <section>
-
+    for (let i = 0; i < item.length; i++) {
+        $("#storeProducts").append(` <section>
         <p>${item[i].name}</p>
         <p>$${item[i].price}</p>
         <p>${item[i].description}</p>
         <img src = '${item[i].picture}'>
+        <button value='${[i]}'>Add To Cart</button>
    </section>`)
     }
 });
