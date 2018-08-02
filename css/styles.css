@@ -4,7 +4,9 @@
 }
 
 body {
-    background-image: url(../images/background.jpg);
+    /* background-image: url(../images/background.jpg); */
+    background-color:#e9d9c6;
+ 
 }
   
 nav {
@@ -14,6 +16,8 @@ nav {
     height:  70px;
     color: #e9d9c6;
     padding-top: 30px;
+    border-bottom: solid 10px #b66741;
+ 
 
 }
 
@@ -35,13 +39,24 @@ nav {
 }
 
 .pic img{
-    height:80%;
-    width:80%;  
+    height:auto;
+    width:50px;  
 }
 
 #storeProducts {
+    font-family: 'Lato', sans-serif;
     display:flex;
-    justify-content:space-around;
     flex-direction:column;
+    align-items:center;
+    
+}
 
+.home a {
+    color: #e9d9c6;
+    font-family: 'Lato', sans-serif;
+}
+
+#storeProducts img {
+    height:50%;
+    width:50%;
 }

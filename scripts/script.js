@@ -7,9 +7,6 @@ class Item {
       }
   }
 
-// for (let i=0; i< item.length; i++)
-// console.log(i)
-
 $(document).ready( () => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
@@ -26,22 +23,34 @@ $(document).ready( () => {
         }
     });
 
+
+    //when ship icon is clicked from products page, takes you to checkout page
     $('body').on('click', '.cart #haul', ()=>{
         showCheckout()
     })
 
+
+    //When "products" is clicked from the checkout page, takes you back to the products page
+    $('body').on('click', '.home a', ()=>{
+        showStore()
+    } )
+
     const showStore = () => {
         $('section#storePage').show();
-        $('section#checkoutForm').hide();
+        $('section#checkoutForm').hide()
+        $('.home a').hide();
+        $('.cart #haul').show();
     }
 
     const showCheckout = () => {
-        $('#storePage').hide();
+        $('#storePage').hide()
+        $('.cart #haul').hide();
         $('#checkoutForm').show();
+        $('.home a').show();
     }
 
     showStore();
-  
+  // array of item objects. Holds info including: name, price, description, and image link
     let item = [
    new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
    new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
@@ -57,6 +66,7 @@ $(document).ready( () => {
    new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
     ];
 
+//loops through item array to display all 12 items including name, price, description, and image
    for (let i =0; i < item.length; i++) {
    $("#storeProducts").append(` <section>
         <p>${item[i].name}</p>
