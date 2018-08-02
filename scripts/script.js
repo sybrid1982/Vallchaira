@@ -24,6 +24,10 @@ $(document).ready( () => {
         }
     });
 
+    $('body').on('click', '.cart #haul', ()=>{
+        showCheckout()
+    })
+
     const showStore = () => {
         $('section#storePage').show();
         $('section#checkoutForm').hide();
@@ -36,16 +40,27 @@ $(document).ready( () => {
 
     showStore();
   
-   let item1 = new Item("Iron Throne", 500, "description", 'images/fancy-chair.jpg')
-   let item2 = new Item("Iron Throne", 500, "description", 'images/hand-throne.jpg')
-   let item3 = new Item("Iron Throne", 500, "description", 'images/small-wooden.jpg')
-   let item4 = new Item("Iron Throne", 500, "description", 'images/viking-chair.jpg')
-   let item5 = new Item("Iron Throne", 500, "description", 'images/wooden-throne.jpg')
-   let item6 = new Item("Iron Throne", 500, "description", 'images/simple-design.jpg')
-   let item7 = new Item("Iron Throne", 500, "description", 'images/scary-chair.jpg')
-   let item8 = new Item("Iron Throne", 500, "description", 'images/metal-throne.jpg')
-   let item9 = new Item("Loks Dream", 500, "description", 'images/loks-dream.jpg')
-   let item10 = new Item("Iron Throne", 500, "description", 'images/iron-throne.jpg')
-   let item11 = new Item("Iron Throne", 500, "description", 'images/carved-chair.jpg')
-   let item12 = new Item("Iron Throne", 500, "description", 'images/braided-wood.jpg')
+    let item = [
+        new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/small-wooden.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/viking-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/wooden-throne.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/simple-design.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/scary-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/metal-throne.jpg'),
+        new Item("Loks Dream", 500, "description", 'newimages/loks-dream.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/iron-throne.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/carved-chair.jpg'),
+        new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
+    ];
+
+   for (let i =0; i < item.length; i++) {
+   $("#storeProducts").append(` <section>
+        <p>${item[i].name}</p>
+        <p>$${item[i].price}</p>
+        <p>${item[i].description}</p>
+        <img src = '${item[i].picture}'>
+   </section>`)
+   }
 });
