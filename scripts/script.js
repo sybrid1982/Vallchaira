@@ -14,6 +14,8 @@ $(document).ready( () => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
 
+
+
     $('body').on('change', '#checkoutForm input[type=radio]', (e)=> {
         if($(e.target).attr('id')==='cash') {
             $('#ccInfo').hide();
@@ -23,6 +25,18 @@ $(document).ready( () => {
             $('#cashInfo').hide();
         }
     });
+
+    const showStore = () => {
+        $('section#storePage').show();
+        $('section#checkoutForm').hide();
+    }
+
+    const showCheckout = () => {
+        $('#storePage').hide();
+        $('#checkoutForm').show();
+    }
+
+    showStore();
   
    let item1 = new Item("Iron Throne", 500, "description", 'images/fancy-chair.jpg')
    let item2 = new Item("Iron Throne", 500, "description", 'images/hand-throne.jpg')
