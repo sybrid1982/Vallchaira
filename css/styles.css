@@ -38,3 +38,10 @@ nav {
     height:80%;
     width:80%;  
 }
+
+#storeProducts {
+    display:flex;
+    justify-content:space-around;
+    flex-direction:column;
+
+}
