@@ -104,7 +104,6 @@ $(document).ready(() => {
         }
     });
 
-
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
     })
@@ -165,6 +164,7 @@ $(document).ready(() => {
     const showCheckout = () => {
         $('#storePage').hide();
         $('#checkoutForm').show();
+        $('#cartDisplay').show();
         if(cart.lineItems.length > 0) {
             $('#emptyCartWarning').hide();
             $('#paymentInfo').show();
@@ -186,6 +186,11 @@ $(document).ready(() => {
         console.log(costReq, cashInput);
         return cashInput - costReq;
     }
+
+    $("body").on("click", "#check", (e)=>{
+        $("#cartDisplay").hide();
+        showCheckout();
+    });
 
     showStore();
 
@@ -214,15 +219,5 @@ $(document).ready(() => {
             <img class="picture" src = '${item[i].picture}'>
             <button value='${[i]}'>Add To Cart</button>
         </section>`)
-
-   $("#storeProducts").append(` <section>
-        <p class="name">${item[i].name}</p>
-        <p class="price">$${item[i].price}</p>
-        <p class="description">${item[i].description}</p>
-        <img class="picture" src = '${item[i].picture}'>
-        <button id="add" value='${[i]}'>Add To Cart</button>
-
-   </section>`)
-
     }
 });
