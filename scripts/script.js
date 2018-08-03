@@ -82,18 +82,6 @@ $(document).ready(() => {
         }
     });
 
-  
-
-   
-
-
-    function delElement(a) {
-        inames.splice(a, 1);
-        iqty.splice(a, 1)
-        iprice.splice(a, 1)
-        displayCart()
-    }
-
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
     })
@@ -109,7 +97,13 @@ $(document).ready(() => {
     const showCheckout = () => {
         $('#storePage').hide();
         $('#checkoutForm').show();
+        $('#cartDisplay').show();
     }
+
+    $("body").on("click", "#check", (e)=>{
+        $("#cartDisplay").hide();
+        showCheckout();
+    });
 
     showStore();
 
