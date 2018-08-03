@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +13,23 @@
     <!-- font-family: 'Fondamento', cursive;-->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
 
     <nav>
         <div class="logo">Vallchaira</div>
-        <div class="pic"> <img src="images/Badger_Logo-03.png"></div>
-        <div class="cart"><a href="#"><img id="haul" src="images/boat.png"></a></div>
-        <div class="home"><a>Products</a></div>
+        <div class="pic">
+            <img src="images/Badger_Logo-03.png">
+        </div>
+        <div class="cart">
+            <a href="#">
+                <img id="haul" src="images/boat.png">
+            </a>
+        </div>
+        <div class="home">
+            <a>Products</a>
+        </div>
     </nav>
 
 
@@ -30,66 +40,67 @@
 
 
     <section id='storePage'>
-        <!--This is just here for debugging, to make sure the store page is-->
-        
-        <section id="cartContent">
-                
-                <img src="">
-                <p></p>
-        </section>
         <section id="storeProducts"></section>
-        </section>
     </section>
-    
+
 
     <section id='checkoutForm'>
         <h3>Checkout</h3>
-        <a href="index.html"class="button">Continue Shopping</a>
+        <a href="index.html" class="button">Continue Shopping</a>
         <button type="reset">Empty Cart</button>
-        <input type="radio" name='paymentOption' id="cash">
-        <label for="cash">Cash</label>
-        <input type="radio" name='paymentOption' id="creditCard">
-        <label for="creditCard">Credit Card</label>
+        <p id='emptyCartWarning'>Your cart is currently empty</p>
+        <section id='paymentInfo'>
+            <input type="radio" name='paymentOption' id="cash">
+            <label for="cash">Cash</label>
+            <input type="radio" name='paymentOption' id="creditCard">
+            <label for="creditCard">Credit Card</label>
 
-        <form id="ccInfo">
-            <label for="ccName">Name on Credit Card</label>
-            <input type="text" id="ccName">
-            <label for="ccNumber">Credit Card Number</label>
-            <input type="text" id="ccNumber">
-            <label for="ccCVV">CVV</label>
-            <input type="text" id="ccCVV">
+            <form id="ccInfo">
+                <label for="ccName">Name on Credit Card</label>
+                <input type="text" id="ccName">
+                <label for="ccNumber">Credit Card Number</label>
+                <input type="text" id="ccNumber">
+                <label for="ccCVV">CVV</label>
+                <input type="text" id="ccCVV">
 
-            <button type="submit">Place Order</button>
-            <button type="reset">Cancel</button>
-        </form>
+                <button type="button" class='placeOrder'>Place Order</button>
+                <button type="reset">Cancel</button>
+            </form>
 
-        <form id='cashInfo'>
-            <!--First paragraph will display the total required-->
-            <p id='cashRequired'></p>
-            <!--This label will be where the user inputs the entered cash-->
-            <label for='cashGiven'>Required Cash</label>
-            <input type='number' id='cashGiven'>
-            <!--This label will show if the user has not input enough cash-->
-            <p id='warning'></p>
-            <!--This label will show the change the user is due, if any-->
-            <p id='cashReturned'></p>
+            <form id='cashInfo'>
+                <!--First paragraph will display the total required-->
+                <p id='cashRequired'></p>
+                <!--This label will be where the user inputs the entered cash-->
+                <label for='cashGiven'>Currency Given</label>
+                <input type='number' id='cashGiven'>
+                <!--This label will show if the user has not input enough cash-->
+                <p id='warning'></p>
+                <!--This label will show the change the user is due, if any-->
+                <p id='cashReturned'></p>
 
+                <button type='button' class='placeOrder'>Place Order</button>
+            </form>
+        </section>
+    </section>
+
+    <section id='receiptForm'>
             <button type='submit'>Place Order</button>
         </form>
-        
+
     </section>
-  
-    <div id="cart"></div>
 
+    <section id="cartDisplay">
+        <img id="X" src="newimages/X1.png"/>
+        <div id="cart"></div>
+        <button id="continue">Continue Shopping</button>
+        <button id="check">Check Out</button>
+    </section>
     <footer class="foot"></footer>
-    
-    <img src="../images/background.jpg" class="background-image">
 
+    <img src="images/background.jpg" class="background-image">
 
-  
-
-   
-   <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-   <script src="scripts/script.js"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>
