@@ -98,8 +98,10 @@ body {
     flex-wrap: wrap;
 }
 
+
 #cart{
     display:flex;
+
     flex-direction:column;
     align-items:center;
     margin-top: 30px;
@@ -122,9 +124,12 @@ body {
     display:none;
     border: 2px solid #8e7451;
 }
+
 #cartDisplay img{
+
     width:20px;
     position:absolute;
     top:20px;
     right:20px
 }
+
