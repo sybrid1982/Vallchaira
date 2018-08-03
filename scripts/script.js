@@ -106,13 +106,19 @@ $(document).ready(() => {
         }
     });
 
+    // The ship button that takes you to the checkout
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
-    })
+    });
+    // The less exciting text products that leads to the store
+    $('body').on('click', 'nav .home', () => {
+        showStore()
+    });
 
     // ADD TO CART BUTTON
     $('body').on('click', '#storeProducts > section > button', (e) => {
         cart.addItem(item[$(e.target).val()], 1);
+        $("#cartDisplay").show();
         // Change the text to added right away
         $(e.target).text('Added');
         // Set a delay for three seconds
@@ -123,6 +129,7 @@ $(document).ready(() => {
         $(target).text('Add To Cart');
     }
 
+    // PLACE ORDER
     $('body').on('click', '#checkoutForm .placeOrder', (e) => {
         $('section#storePage').hide();
         $('section#checkoutForm').hide();
@@ -138,44 +145,52 @@ $(document).ready(() => {
         }
     });
 
+    // Delete Button Event
     $('body').on('click', 'table button', (e) => {
         cart.delElement($(e.target).val());
     })
 
-    $("body").on("click", "#add", (e) => {
-        $("#cartDisplay").show();
-        $("#cartDisplay #cart").text;
-        currentTable = $(e.target);
-      });
-
-      $("body").on("click", "#cartDisplay img:first", (e) => {
+    // Hide Cart if you click the (x) button or continue shopping button
+    $("body").on("click", "#cartDisplay img:first", (e) => {
         $("#cartDisplay").hide();
-       
-      })
-      $("body").on("click", "#continue", (e) => {
+    
+    })
+    $("body").on("click", "#continue", (e) => {
         $("#cartDisplay").hide();
-       
-      })
-      $("body").on("click", "#check", (e)=>{
-        $('#checkoutForm').show();
-        $("#cartDisplay").hide();
-        
-      })
-
+    
+    })
+    // If you checkout, hide the cart and show the checkout page
+    $("body").on("click", "#check", (e)=>{
+        showCheckout();
+    });
 
     const showStore = () => {
         $('section#storePage').show();
         $('section#checkoutForm').hide();
         $('.price').hide();
         $('.description').hide();
+        $('.welcome-block').show();
+
+        // Hide the ship button
+        $('nav .cart').show();
+        // Show the home button
+        $('nav .home').hide();
     }
 
     const showCheckout = () => {
+        // Hide the store page
         $('#storePage').hide();
+        // Show the checkout
         $('#checkoutForm').show();
+        // Hide the welcome block
         $('.welcome-block').hide();
+        // Hide the cart display
+        $('#cartDisplay').hide();
+        // Hide the ship button
+        $('nav .cart').hide();
+        // Show the home button
+        $('nav .home').show();
 
-        $('#cartDisplay').hide
         if(cart.lineItems.length > 0) {
             $('#emptyCartWarning').hide();
             $('#paymentInfo').show();
