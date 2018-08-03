@@ -252,7 +252,7 @@ $(document).ready(() => {
 
    for (let i =0; i < item.length; i++) {
    $("#storeProducts").append(
-       ` <section>
+       ` <section class='wrapper'>
             <p class="name">${item[i].name}</p>
 
             <p class="price ${i}">$${item[i].price}</p>
