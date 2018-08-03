@@ -109,10 +109,19 @@ $(document).ready(() => {
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
     })
+
+    // ADD TO CART BUTTON
     $('body').on('click', '#storeProducts > section > button', (e) => {
         cart.addItem(item[$(e.target).val()], 1);
-
+        // Change the text to added right away
+        $(e.target).text('Added');
+        // Set a delay for three seconds
+        window.setTimeout(changeTextBackToAdded, 3000, e.target);
     });
+
+    const changeTextBackToAdded = (target) => {
+        $(target).text('Add To Cart');
+    }
 
     $('body').on('click', '#checkoutForm .placeOrder', (e) => {
         $('section#storePage').hide();
@@ -135,7 +144,6 @@ $(document).ready(() => {
 
     $("body").on("click", "#add", (e) => {
         $("#cartDisplay").show();
-        console.log(e.target);
         $("#cartDisplay #cart").text;
         currentTable = $(e.target);
       });
