@@ -44,12 +44,16 @@ class Cart {
             this.lineItems.push(new LineItem(item, quantity));
         }
         this.displayCart()
-    } 
+    }
+    delElement(i) {
+        this.lineItems.splice(i, 1);
 
-     displayCart() {
+        this.displayCart()
+    }
+
+    displayCart() {
 
 
-         let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
 
         let subtotal = 0;
         let total = 0;
@@ -57,14 +61,19 @@ class Cart {
         for (let i = 0; i < this.lineItems.length; i++) {
             subtotal = this.lineItems[i].subtotal();
             total += subtotal + (subtotal * .06)
+
             cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" + subtotal + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
+
+            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td></td><td><button>Delete</button></td></tr>"
+
         }
 
-        cartdata += '<tr><td></td><td></td><td></td>' + subtotal + '</td><td>' + total + '</td></tr></table>'
+        cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
 
         document.getElementById('cart').innerHTML = cartdata
 
     }
+
 
     getTotal() {
         let total = 0;
@@ -75,6 +84,7 @@ class Cart {
         }
         return total;
     }
+
 }
 
 
@@ -97,11 +107,13 @@ $(document).ready(() => {
         }
     });
 
+
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
     })
-    $('body').on('click', '#storeProducts > section > button', (e)=> {
+    $('body').on('click', '#storeProducts > section > button', (e) => {
         cart.addItem(item[$(e.target).val()], 1);
+
     });
 
     $('body').on('click', '#checkoutForm .placeOrder', (e) => {
@@ -118,6 +130,35 @@ $(document).ready(() => {
             $receipt.append(`You paid by cash and are due $${calculateChange()} in change.`);
         }
     });
+
+    })
+    $('body').on('click', 'table button', (e) => {
+        cart.delElement($(e.target).val());
+
+
+
+    })
+
+    $("body").on("click", "#add", (e) => {
+        $("#cartDisplay").show();
+        console.log(e.target);
+        $("#cartDisplay #cart").text;
+        currentTable = $(e.target);
+      });
+
+      $("body").on("click", "#cartDisplay img:first", (e) => {
+        $("#cartDisplay").hide();
+       
+      })
+      $("body").on("click", "#check", (e)=>{
+        $("#cartDisplay").hide();
+        showCheckout();
+      })
+
+
+
+
+
 
     const showStore = () => {
         $('section#storePage').show();
@@ -167,6 +208,7 @@ $(document).ready(() => {
     ];
 
    for (let i =0; i < item.length; i++) {
+
    $("#storeProducts").append(
        ` <section>
             <p class="name">${item[i].name}</p>
@@ -175,5 +217,15 @@ $(document).ready(() => {
             <img class="picture" src = '${item[i].picture}'>
             <button value='${[i]}'>Add To Cart</button>
         </section>`)
+
+   $("#storeProducts").append(` <section>
+        <p class="name">${item[i].name}</p>
+        <p class="price">$${item[i].price}</p>
+        <p class="description">${item[i].description}</p>
+        <img class="picture" src = '${item[i].picture}'>
+        <button id="add" value='${[i]}'>Add To Cart</button>
+
+   </section>`)
+
     }
 });
