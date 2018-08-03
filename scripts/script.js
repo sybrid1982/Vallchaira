@@ -87,9 +87,6 @@ class Cart {
 
 }
 
-
-
-
 $(document).ready(() => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
