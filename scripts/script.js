@@ -20,6 +20,10 @@ class LineItem {
             return false;
         }
     }
+    subtotal(){
+        let subtotal = this.item.price * this.quantity;
+        return subtotal;
+    }
 }
 
 class Cart {
@@ -45,21 +49,31 @@ class Cart {
      displayCart() {
 
 
-       let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
+         let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
 
         let subtotal = 0;
         let total = 0;
 
         for (let i = 0; i < this.lineItems.length; i++) {
-            subtotal = this.lineItems[i].quantity * this.lineItems[i].item.price;
+            subtotal = this.lineItems[i].subtotal();
             total += subtotal + (subtotal * .06)
-            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" +this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
+            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" + subtotal + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
         }
 
         cartdata += '<tr><td></td><td></td><td></td>' + subtotal + '</td><td>' + total + '</td></tr></table>'
 
         document.getElementById('cart').innerHTML = cartdata
 
+    }
+
+    getTotal() {
+        let total = 0;
+        let subtotal = 0;
+        for (let i = 0; i < this.lineItems.length; i++) {
+            subtotal = this.lineItems[i].subtotal();
+            total += subtotal + (subtotal * .06)
+        }
+        return total;
     }
 }
 
@@ -72,6 +86,7 @@ $(document).ready(() => {
 
     let cart = new Cart();
 
+    // Registering Event Handlers/Listeners
     $('body').on('change', '#checkoutForm input[type=radio]', (e) => {
         if ($(e.target).attr('id') === 'cash') {
             $('#ccInfo').hide();
@@ -82,24 +97,27 @@ $(document).ready(() => {
         }
     });
 
-  
-
-   
-
-
-    function delElement(a) {
-        inames.splice(a, 1);
-        iqty.splice(a, 1)
-        iprice.splice(a, 1)
-        displayCart()
-    }
-
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
     })
     $('body').on('click', '#storeProducts > section > button', (e)=> {
         cart.addItem(item[$(e.target).val()], 1);
-    })
+    });
+
+    $('body').on('click', '#checkoutForm .placeOrder', (e) => {
+        $('section#storePage').hide();
+        $('section#checkoutForm').hide();
+        const $receipt = $('section#receiptForm');
+        $receipt.append(`<h3>Thank You For Your Order</h3>`);
+        $receipt.append(`<div class='cart'></div>`);
+        cart.displayCart();
+        console.log($(e.target).parent());
+        if((e.target).parentNode.getAttribute('id')==='ccInfo') {
+            $receipt.append(`<p>You paid by credit card</p>`);
+        } else if ($(e.target).parent().attr('id')==='cashInfo') {
+            $receipt.append(`You paid by cash and are due $${calculateChange()} in change.`);
+        }
+    });
 
     const showStore = () => {
         $('section#storePage').show();
@@ -109,6 +127,26 @@ $(document).ready(() => {
     const showCheckout = () => {
         $('#storePage').hide();
         $('#checkoutForm').show();
+        if(cart.lineItems.length > 0) {
+            $('#emptyCartWarning').hide();
+            $('#paymentInfo').show();
+            $('#cashInfo #cashRequired').text(`Please pay ${cart.getTotal()}`);
+        } else {
+            $('#emptyCartWarning').show();
+            $('#paymentInfo').hide();
+        }
+    }
+
+    // This will grab the cash required amount and the
+    // cash given amount and calculate the amount of change
+    // due.
+    // If negative, then we know the user needs to input
+    // more cash.
+    const calculateChange = () => {
+        const costReq = cart.getTotal();
+        let cashInput = parseFloat($('#cashInfo #cashGiven').val());
+        console.log(costReq, cashInput);
+        return cashInput - costReq;
     }
 
     showStore();
@@ -129,13 +167,13 @@ $(document).ready(() => {
     ];
 
    for (let i =0; i < item.length; i++) {
-   $("#storeProducts").append(` <section>
-        <p class="name">${item[i].name}</p>
-        <p class="price">$${item[i].price}</p>
-        <p class="description">${item[i].description}</p>
-        <img class="picture" src = '${item[i].picture}'>
-        <button value='${[i]}'>Add To Cart</button>
-
-   </section>`)
+   $("#storeProducts").append(
+       ` <section>
+            <p class="name">${item[i].name}</p>
+            <p class="price">$${item[i].price}</p>
+            <p class="description">${item[i].description}</p>
+            <img class="picture" src = '${item[i].picture}'>
+            <button value='${[i]}'>Add To Cart</button>
+        </section>`)
     }
 });
