@@ -156,6 +156,8 @@ $(document).ready(() => {
     const showStore = () => {
         $('section#storePage').show();
         $('section#checkoutForm').hide();
+        $('.price').hide();
+        $('.description').hide();
     }
 
     const showCheckout = () => {
@@ -189,8 +191,6 @@ $(document).ready(() => {
         showCheckout();
     });
 
-    showStore();
-
     let item = [
         new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
         new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
@@ -206,15 +206,61 @@ $(document).ready(() => {
         new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
     ];
 
+   
+    $('body').on('click', '#storeProducts .picture', (e) => {
+    // for (let i =0; i < item.length; i++)
+    // let index = parseInt($(e.target).val());
+    // let descriptionParent = $('#storeProducts').children().eq(index); {
+    //     if ($('#storeProducts.description').val() === item[i].picture){
+            index = $(e.target);
+            let descriptions = $('.description');
+            let prices = $('.price');
+
+            for(let i = 0; i < descriptions.length; i++) {
+                //grabs description/price from description(i)/price(i)
+                let description = descriptions.eq(i);
+                let price = prices.eq(i);
+                if ($(e.target).hasClass(`${i}`))  {
+                    if (price.hasClass("clicked")){
+                        price.removeClass("clicked").slideUp();
+                        description.removeClass('clicked').slideUp();
+                    } else {
+                        price.slideDown().addClass("clicked");
+                        description.slideDown().addClass("clicked");
+                    }
+                }
+            }
+          
+     })
+
+//      $('body').on('click', '#storeProducts .picture', '.clicked', (e) => {
+//         $('#storeProducts .price').slideUp();
+//         $('#storeProducts .description').slideUp();
+//  })
+   
+
+//loops through item array to display all 12 items including name, price, description, and image
+
+
+
+
+
+
    for (let i =0; i < item.length; i++) {
 
    $("#storeProducts").append(
        ` <section>
             <p class="name">${item[i].name}</p>
-            <p class="price">$${item[i].price}</p>
-            <p class="description">${item[i].description}</p>
-            <img class="picture" src = '${item[i].picture}'>
+
+            <p class="price ${i}">$${item[i].price}</p>
+            <p class="description ${i}">${item[i].description}</p>
+            <img class="picture ${i}"  src = '${item[i].picture}'>
             <button id="add" value='${[i]}'>Add To Cart</button>
+
         </section>`)
     }
+
+
+
+    showStore();
 });
