@@ -151,10 +151,6 @@ $(document).ready(() => {
       })
 
 
-
-
-
-
     const showStore = () => {
         $('section#storePage').show();
         $('section#checkoutForm').hide();
