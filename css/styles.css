@@ -184,3 +184,50 @@ th, td, tr{
     top:20px;
     right:20px
 }
+
+* Main-content------------------- */
+#storeProducts {
+    font-size:50px;
+    color: #e9d9c6;
+    border: #e9d9c6 solid 10px;
+    height: 70%;
+    background: #a5a191;
+    border-radius: 5px;
+    margin: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#storePage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.picture {
+    border-radius: 10px;
+}
+
+
+.wrapper {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    border-top: #8e7451 solid 10px;
+    box-shadow: 5px 10px 18px black;
+}
+
+/* Items and their propertys -------------------------*/
+
+.name {
+    font-family: 'Fondamento', cursive;
+    color: #B66741;
+}
+
