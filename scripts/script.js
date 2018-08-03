@@ -61,11 +61,14 @@ class Cart {
             subtotal = this.lineItems[i].subtotal();
             total += subtotal + (subtotal * .06)
 
+
+
             cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].subtotal() + "</td><td></td><td><button>Delete</button></td></tr>"
+
 
         }
 
-        cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
+       cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
 
         document.getElementById('cart').innerHTML = cartdata
 
@@ -139,14 +142,15 @@ $(document).ready(() => {
         $("#cartDisplay").hide();
        
       })
-      $("body").on("click", "#check", (e)=>{
+      $("body").on("click", "#continue", (e) => {
         $("#cartDisplay").hide();
-        showCheckout();
+       
       })
-
-
-
-
+      $("body").on("click", "#check", (e)=>{
+        $('#checkoutForm').show();
+        $("#cartDisplay").hide();
+        
+      })
 
 
     const showStore = () => {
@@ -159,7 +163,7 @@ $(document).ready(() => {
     const showCheckout = () => {
         $('#storePage').hide();
         $('#checkoutForm').show();
-        $('#cartDisplay').show();
+        $('#cartDisplay').hide
         if(cart.lineItems.length > 0) {
             $('#emptyCartWarning').hide();
             $('#paymentInfo').show();
@@ -247,10 +251,12 @@ $(document).ready(() => {
    $("#storeProducts").append(
        ` <section>
             <p class="name">${item[i].name}</p>
+
             <p class="price ${i}">$${item[i].price}</p>
             <p class="description ${i}">${item[i].description}</p>
             <img class="picture ${i}"  src = '${item[i].picture}'>
-            <button value='${[i]}'>Add To Cart</button>
+            <button id="add" value='${[i]}'>Add To Cart</button>
+
         </section>`)
     }
 
