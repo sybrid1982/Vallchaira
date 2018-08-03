@@ -116,6 +116,10 @@ $(document).ready(() => {
         $("#cartDisplay").hide();
        
       })
+      $("body").on("click", "#check", (e)=>{
+        $("#cartDisplay").hide();
+        showCheckout();
+      })
 
 
 
