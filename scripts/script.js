@@ -105,6 +105,19 @@ $(document).ready(() => {
 
     })
 
+    $("body").on("click", "#add", (e) => {
+        $("#cartDisplay").show();
+        console.log(e.target);
+        $("#cartDisplay #cart").text;
+        currentTable = $(e.target);
+      });
+
+      $("body").on("click", "#cartDisplay img:first", (e) => {
+        $("#cartDisplay").hide();
+       
+      })
+
+
 
 
 
@@ -141,7 +154,7 @@ $(document).ready(() => {
         <p class="price">$${item[i].price}</p>
         <p class="description">${item[i].description}</p>
         <img class="picture" src = '${item[i].picture}'>
-        <button value='${[i]}'>Add To Cart</button>
+        <button id="add" value='${[i]}'>Add To Cart</button>
 
    </section>`)
     }
