@@ -62,15 +62,15 @@ class Cart {
             subtotal = this.lineItems[i].subtotal();
             total += subtotal + (subtotal * .06)
 
-            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" + subtotal + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
+           this.cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" + subtotal + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
 
-            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td></td><td><button>Delete</button></td></tr>"
+            this.cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td></td><td><button>Delete</button></td></tr>"
 
         }
 
-        cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
+       this.cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
 
-        document.getElementById('cart').innerHTML = cartdata
+        document.getElementById('cart').innerHTML = this.cartdata
 
     }
 
@@ -227,5 +227,6 @@ $(document).ready(() => {
 
    </section>`)
 
-    }
-});
+   }
+
+
