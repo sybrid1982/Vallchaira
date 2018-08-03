@@ -98,23 +98,21 @@ body {
     flex-wrap: wrap;
 }
 
-#cart{display:flex;
+
+#cart{
+    display:flex;
+
     flex-direction:column;
     align-items:center;
     margin-top: 30px;
     padding: 10px;
-    border: 2px solid;
-    background: #E9D9C6;
-   }
-   
-   th, td, tr{
-    border: 1px solid;
-    border-color: #8e7451;
-    
-   }
 
-   #cartDisplay {
-    
+}
+
+
+
+#cartDisplay {
+
     background-color:#fff;
     width:90%;
     max-width:400px;
@@ -124,12 +122,14 @@ body {
     position:absolute;
     top:155px;
     display:none;
-  }
+    border: 2px solid #8e7451;
+}
 
-  #cartDisplay img{
+#cartDisplay img{
+
     width:20px;
     position:absolute;
     top:20px;
     right:20px
-  }
-  
+}
+

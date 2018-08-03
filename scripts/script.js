@@ -52,8 +52,7 @@ class Cart {
     }
 
     displayCart() {
-
-
+        let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
 
         let subtotal = 0;
         let total = 0;
@@ -62,9 +61,13 @@ class Cart {
             subtotal = this.lineItems[i].subtotal();
             total += subtotal + (subtotal * .06)
 
+
            this.cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" +this.lineItems[i].item.price + "</td><td>" +this.lineItems[i].quantity + "</td><td>" + subtotal + "</td><td><button onclick='delElement(" + i + ")'>Delete</button></td></tr>"
 
             this.cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td></td><td><button>Delete</button></td></tr>"
+
+            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].subtotal() + "</td><td></td><td><button>Delete</button></td></tr>"
+
 
         }
 
@@ -87,9 +90,6 @@ class Cart {
 
 }
 
-
-
-
 $(document).ready(() => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
@@ -106,7 +106,6 @@ $(document).ready(() => {
             $('#cashInfo').hide();
         }
     });
-
 
     $('body').on('click', '.cart #haul', () => {
         showCheckout()
@@ -131,12 +130,8 @@ $(document).ready(() => {
         }
     });
 
-    })
     $('body').on('click', 'table button', (e) => {
         cart.delElement($(e.target).val());
-
-
-
     })
 
     $("body").on("click", "#add", (e) => {
@@ -168,6 +163,7 @@ $(document).ready(() => {
     const showCheckout = () => {
         $('#storePage').hide();
         $('#checkoutForm').show();
+        $('#cartDisplay').show();
         if(cart.lineItems.length > 0) {
             $('#emptyCartWarning').hide();
             $('#paymentInfo').show();
@@ -189,6 +185,11 @@ $(document).ready(() => {
         console.log(costReq, cashInput);
         return cashInput - costReq;
     }
+
+    $("body").on("click", "#check", (e)=>{
+        $("#cartDisplay").hide();
+        showCheckout();
+    });
 
     showStore();
 
@@ -217,16 +218,5 @@ $(document).ready(() => {
             <img class="picture" src = '${item[i].picture}'>
             <button value='${[i]}'>Add To Cart</button>
         </section>`)
-
-   $("#storeProducts").append(` <section>
-        <p class="name">${item[i].name}</p>
-        <p class="price">$${item[i].price}</p>
-        <p class="description">${item[i].description}</p>
-        <img class="picture" src = '${item[i].picture}'>
-        <button id="add" value='${[i]}'>Add To Cart</button>
-
-   </section>`)
-
-   }
-
-
+    }
+});
