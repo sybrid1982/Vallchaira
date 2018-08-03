@@ -1,9 +1,11 @@
 class Item {
     constructor(name, price, description, picture) {
+   
         this.name = name;
         this.price = price;
         this.description = description;
         this.picture = picture;
+      
     }
 }
 
@@ -163,6 +165,8 @@ $(document).ready(() => {
     const showCheckout = () => {
         $('#storePage').hide();
         $('#checkoutForm').show();
+        $('.welcome-block').hide();
+
         $('#cartDisplay').hide
         if(cart.lineItems.length > 0) {
             $('#emptyCartWarning').hide();
@@ -192,18 +196,18 @@ $(document).ready(() => {
     });
 
     let item = [
-        new Item("Iron Throne", 500, "description", 'newimages/fancy-chair.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/hand-throne.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/small-wooden.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/viking-chair.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/wooden-throne.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/simple-design.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/scary-chair.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/metal-throne.jpg'),
-        new Item("Loks Dream", 500, "description", 'newimages/loks-dream.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/iron-throne.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/carved-chair.jpg'),
-        new Item("Iron Throne", 500, "description", 'newimages/braided-wood.jpg'),
+        new Item("The Seat of Iron", 1200, "description", 'newimages/fancy-chair.jpg'),
+        new Item("Oak Throne", 600, "description", 'newimages/hand-throne.jpg'),
+        new Item("The Golden serpant seat", 400, "description", 'newimages/small-wooden.jpg'),
+        new Item("The Watcher", 650, "description", 'newimages/viking-chair.jpg'),
+        new Item("The All Father", 1200, "description", 'newimages/wooden-throne.jpg'),
+        new Item("Wyvern Fury", 300, "description", 'newimages/simple-design.jpg'),
+        new Item("The Wolves Maw", 1500, "description", 'newimages/scary-chair.jpg'),
+        new Item("Muh Ladies Throne", 950, "description", 'newimages/metal-throne.jpg'),
+        new Item("Loki's Dream", 400, "description", 'newimages/loks-dream.jpg'),
+        new Item("Seat of Pain", 500, "description", 'newimages/iron-throne.jpg'),
+        new Item("Valkyrie's Kiss", 700, "description", 'newimages/carved-chair.jpg'),
+        new Item("Jormungander", 500, "description",'newimages/braided-wood.jpg')
     ];
 
    
@@ -247,7 +251,6 @@ $(document).ready(() => {
 
 
    for (let i =0; i < item.length; i++) {
-
    $("#storeProducts").append(
        ` <section>
             <p class="name">${item[i].name}</p>
