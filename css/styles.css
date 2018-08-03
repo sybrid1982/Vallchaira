@@ -97,3 +97,16 @@ body {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+#cart{
+    margin-top: 30px;
+    padding: 10px;
+    border: 2px solid;
+    background: #E9D9C6;
+   }
+   
+   th, td, tr{
+    border: 1px solid;
+    border-color: #8e7451;
+    
+   }

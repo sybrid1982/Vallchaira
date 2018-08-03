@@ -58,10 +58,10 @@ class Cart {
         for (let i = 0; i < this.lineItems.length; i++) {
             subtotal = this.lineItems[i].quantity * this.lineItems[i].item.price;
             total += subtotal + (subtotal * .06)
-            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>" + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" + this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td><button '>Delete</button></td></tr>"
+            cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].quantity * this.lineItems[i].item.price + "</td><td></td><td><button>Delete</button></td></tr>"
         }
 
-        cartdata += '<tr><td></td><td></td><td></td>' + subtotal + '</td><td>' + total + '</td></tr></table>'
+        cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
 
         document.getElementById('cart').innerHTML = cartdata
 
