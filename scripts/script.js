@@ -45,15 +45,17 @@ class Cart {
         if (!newLineItem) {
             this.lineItems.push(new LineItem(item, quantity));
         }
-        this.displayCart()
+        this.displayCart(document.getElementById('cart'));
     }
     delElement(i) {
         this.lineItems.splice(i, 1);
 
-        this.displayCart()
+        this.displayCart(document.getElementById('cart'));
+        this.displayCart(document.getElementById('checkoutCart'));
+
     }
 
-    displayCart() {
+    displayCart(targetElement) {
         let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
 
         let subtotal = 0;
@@ -70,9 +72,9 @@ class Cart {
 
         }
 
-       cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
+        cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
 
-        document.getElementById('cart').innerHTML = cartdata
+        targetElement.innerHTML = cartdata;
 
     }
 
@@ -134,6 +136,7 @@ $(document).ready(() => {
         $('section#storePage').hide();
         $('section#checkoutForm').hide();
         const $receipt = $('section#receiptForm');
+        $receipt.show();
         $receipt.append(`<h3>Thank You For Your Order</h3>`);
         $receipt.append(`<div class='cart'></div>`);
         cart.displayCart();
@@ -153,11 +156,10 @@ $(document).ready(() => {
     // Hide Cart if you click the (x) button or continue shopping button
     $("body").on("click", "#cartDisplay img:first", (e) => {
         $("#cartDisplay").hide();
-    
     })
+    // Same, if you click on 'continue shopping'
     $("body").on("click", "#continue", (e) => {
         $("#cartDisplay").hide();
-    
     })
     // If you checkout, hide the cart and show the checkout page
     $("body").on("click", "#check", (e)=>{
@@ -175,6 +177,8 @@ $(document).ready(() => {
         $('nav .cart').show();
         // Show the home button
         $('nav .home').hide();
+        // Hide the receipt page
+        $('#receiptForm').hide();
     }
 
     const showCheckout = () => {
@@ -190,6 +194,10 @@ $(document).ready(() => {
         $('nav .cart').hide();
         // Show the home button
         $('nav .home').show();
+        // Hide the receipt form
+        $('#receiptForm').hide();
+
+        cart.displayCart(document.getElementById('checkoutCart'));
 
         if(cart.lineItems.length > 0) {
             $('#emptyCartWarning').hide();
@@ -233,7 +241,8 @@ $(document).ready(() => {
         new Item("Jormungander", 500, "description",'newimages/braided-wood.jpg')
     ];
 
-   
+    // When you click on a picture in the store, it will slide down to show the
+    // description and price, or slide back up to hide it if necessary
     $('body').on('click', '#storeProducts .picture', (e) => {
     // for (let i =0; i < item.length; i++)
     // let index = parseInt($(e.target).val());
@@ -267,12 +276,6 @@ $(document).ready(() => {
    
 
 //loops through item array to display all 12 items including name, price, description, and image
-
-
-
-
-
-
    for (let i =0; i < item.length; i++) {
    $("#storeProducts").append(
        ` <section class='wrapper'>
@@ -285,8 +288,6 @@ $(document).ready(() => {
 
         </section>`)
     }
-
-
 
     showStore();
 });
