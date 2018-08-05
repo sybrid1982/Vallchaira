@@ -540,14 +540,23 @@
         width: 20%;
     }
 
-    #checkoutCart * {
+    #checkoutCart table {
         border-collapse: collapse;
+        width: 600px;
+    }
+
+    #checkoutCart * {
         font-size: 1.4rem;
     }
 
     #checkoutCart td {
         border: none;
         border-bottom: 1px solid #8e7451;
+        text-align: center;
+    }
+
+    #checkoutCart td:first-child {
+        column-width: 200px;
     }
 
     #paymentInfo, #receiptCart {
