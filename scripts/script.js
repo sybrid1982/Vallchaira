@@ -159,6 +159,22 @@ $(document).ready(() => {
         }
     });
 
+    // Hover on checkout cart table should change image
+    $('body').on('mouseenter', '#checkoutForm tr', (e)=> {
+        // Get the full table
+        let parentTable = e.target.parentElement.parentElement;
+        // Make sure we're mousing over a row which is neither the total or the header
+        if(e.target.tagName.toUpperCase() === 'TD' && parentTable.lastChild !== e.target.parentElement){
+            let cartIndex = Array.from(parentTable.children).indexOf(e.target.parentElement);
+            // We actually need to remove one from cartIndex since the header 
+            // is the first child at index 0 and the first cart item in it is index 1
+            // while the cart's first index is at 0 and not 1
+            cartIndex -= 1;
+            // Pass that number in to showCartImage
+            showCartImage(cartIndex);
+        }
+    }); 
+
     // Delete Button Event
     $('body').on('click', 'table button', (e) => {
         cart.delElement($(e.target).val());
