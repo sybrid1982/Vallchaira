@@ -145,7 +145,7 @@ $(document).ready(() => {
         // Then abort the order
         if ($(e.target).parent().attr('id')==='cashInfo') {
             if(calculateChange() < 0) {
-                $('#warning').text(`Insufficent funds, you still owe $${calculateChange()}.`).css('color', 'red');
+                $('#warning').text(`Insufficent funds, you still owe $${calculateChange()*-1}.`).css('color', 'red');
                 return;
             }
         }
