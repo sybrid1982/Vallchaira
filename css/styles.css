@@ -593,6 +593,17 @@
     border-top: #8e7451 solid 10px;
     box-shadow: 5px 10px 18px black;
 }
+
+.wrapper button{
+    background-color:  #B66741;
+    border-radius:5px;
+    color:#e9d9c6;
+    padding:3px;
+    margin:3px;
+    display:block;
+    margin:10px;
+
+}
 .description, .price{
     color: #B66741;
     font-size: 18px;
