@@ -21,11 +21,6 @@
     margin:3px;
   }
 
-#paymentInfo > div#checkoutCart tr:hover:not(:first-child):not(:last-child)
-{
-    background-color: #e9d9c6;
-}
-
 #checkoutForm label {
     font-size: 1em;
 }
@@ -531,11 +526,21 @@
         font-size: 1.4rem;
     }
 
+    #checkoutCart td {
+        border: none;
+        border-bottom: 1px solid #8e7451;
+    }
+
     #paymentInfo, #receiptCart {
         background-color:#fff;
         width:100%;
         border-radius:3px;
         box-shadow:0px 0px 31px 1px rgba(0,0,0,0.3);
+    }
+
+    #paymentInfo {
+        max-width: none;
+        width: 900px;
     }
 
     #checkoutForm #paymentInfo #cartContainer img {
@@ -594,3 +599,7 @@
     color: #B66741;
 }
 
+#paymentInfo > div#checkoutCart tr:hover:not(:first-child):not(:last-child)
+{
+    background-color: #e9d9c6;
+}
