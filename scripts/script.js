@@ -200,6 +200,21 @@ $(document).ready(() => {
         $('#receiptForm').hide();
     }
 
+    const showCartImage = (index) => {
+        // If we pass an index out of range, just grab the first item image
+        if(index > cart.lineItems.length) {
+            index = 0;
+        }
+        // If we have anything in the cart, then grab the image at the index
+        if(cart.lineItems.length > 0) {
+            $('#cartContainer img').show();
+            $('#cartContainer img').eq(0).prop('src', cart.lineItems[index].item.picture);
+        } else {
+            // The cart is empty, so hide the image altogether
+            $('#cartContainer img').hide();
+        }
+    }
+
     const showCheckout = () => {
         // Hide the store page
         $('#storePage').hide();
@@ -226,6 +241,7 @@ $(document).ready(() => {
             $('#emptyCartWarning').show();
             $('#paymentInfo').hide();
         }
+        showCartImage(0);
     }
 
     // This will grab the cash required amount and the
