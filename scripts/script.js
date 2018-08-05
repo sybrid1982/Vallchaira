@@ -65,11 +65,7 @@ class Cart {
             subtotal = this.lineItems[i].subtotal();
             total += subtotal + (subtotal * .06)
 
-
-
             cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].subtotal() + "</td><td></td><td><button>Delete</button></td></tr>"
-
-
         }
 
         cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
@@ -152,11 +148,14 @@ $(document).ready(() => {
         $receipt.append(`<div id='receiptCart'></div>`);
         cart.displayCart(document.getElementById('receiptCart'));
         $('#receiptCart button').hide();
+        // Change the final message depending on whether paid with cash or credit
         if((e.target).parentNode.getAttribute('id')==='ccInfo') {
             $receipt.append(`<p>You paid by credit card</p>`);
         } else if ($(e.target).parent().attr('id')==='cashInfo') {
             $receipt.append(`You paid by cash and are due $${calculateChange()} in change.`);
         }
+        // Once everything else is done, empty the cart
+        cart.emptyCart();
     });
 
     // Hover on checkout cart table should change image
@@ -202,7 +201,7 @@ $(document).ready(() => {
     });
 
     $("body").on("mouseleave", "#cart", (e)=>{
-        $(this).fadeTo("slow", 0.7);
+//        $(this).fadeTo("slow", 0.7);
     })
     const showStore = () => {
         $('section#storePage').show();
