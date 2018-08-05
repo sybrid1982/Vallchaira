@@ -1,3 +1,27 @@
+/* ----Checkout Cart Display CSS----*/
+
+#checkoutCart * {
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+
+#paymentInfo, #receiptCart {
+    background-color:#fff;
+    width:95%;
+    max-width:400px;
+    border-radius:3px;
+    box-shadow:0px 0px 31px 1px rgba(0,0,0,0.3);
+}
+
+#paymentInfo > div#checkoutCart tr:hover:not(:first-child):not(:last-child)
+{
+    background-color: #e9d9c6;
+}
+
+#checkoutForm label {
+    font-size: 1em;
+}
+
 @media only screen and (max-width: 480px){
     nav {
         display: flex;
@@ -293,6 +317,7 @@
     padding: 0;
 }
 
+/* desktop */
 @media only screen and (min-width:480px){  
     nav {
         display: flex;
@@ -302,6 +327,11 @@
         color: #e9d9c6;
         padding-top: 30px;
         border-bottom: #8e7451 solid 10px;
+    }
+
+    .left{
+        display:flex;
+        flex-direction:row;
     }
 
     .logo {
@@ -344,7 +374,6 @@
     .welcome-block {
         color: #e9d9c6;
         border: #e9d9c6 solid 10px;
-        height: 70%;
         background: #a5a191;
         border-radius: 5px;
         margin: 40px;
@@ -479,6 +508,21 @@
         top:5px;
         right:5px
     }
+
+    /* Checkout Cart Desktop */
+    #checkoutCart * {
+        border-collapse: collapse;
+        font-size: 1.4rem;
+    }
+
+
+    #paymentInfo, #receiptCart {
+        background-color:#fff;
+        width:100%;
+        max-width:500px;
+        border-radius:3px;
+        box-shadow:0px 0px 31px 1px rgba(0,0,0,0.3);
+    }
 }
 
 /* Main-content------------------- */
@@ -527,26 +571,3 @@
     color: #B66741;
 }
 
-/* ----Checkout Cart Display CSS----*/
-
-#checkoutCart * {
-    border-collapse: collapse;
-    font-size: .9rem;
-}
-
-#paymentInfo {
-    background-color:#fff;
-    width:95%;
-    max-width:400px;
-    border-radius:3px;
-    box-shadow:0px 0px 31px 1px rgba(0,0,0,0.3);
-}
-
-#paymentInfo > div#checkoutCart tr:hover:not(:first-child):not(:last-child)
-{
-    background-color: #e9d9c6;
-}
-
-#checkoutForm label {
-    font-size: 1em;
-}

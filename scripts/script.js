@@ -137,10 +137,10 @@ $(document).ready(() => {
         $('section#checkoutForm').hide();
         const $receipt = $('section#receiptForm');
         $receipt.show();
-        $receipt.append(`<h3>Thank You For Your Order</h3>`);
-        $receipt.append(`<div class='cart'></div>`);
-        cart.displayCart();
-        console.log($(e.target).parent());
+        $receipt.prepend(`<h3>Thank You For Your Order</h3>`);
+        $receipt.append(`<div id='receiptCart'></div>`);
+        cart.displayCart(document.getElementById('receiptCart'));
+        $('#receiptCart button').hide();
         if((e.target).parentNode.getAttribute('id')==='ccInfo') {
             $receipt.append(`<p>You paid by credit card</p>`);
         } else if ($(e.target).parent().attr('id')==='cashInfo') {
