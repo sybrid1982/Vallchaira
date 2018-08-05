@@ -78,9 +78,13 @@ class Cart {
     getTotal() {
         let total = 0;
         let subtotal = 0;
-        for (let i = 0; i < this.lineItems.length; i++) {
-            subtotal = this.lineItems[i].subtotal();
-            total += subtotal + (subtotal * .06)
+        // Confirm lineItems is not empty, else the total is zero
+        if(this.lineItems.length > 0) {
+            // Loop through the definitely not empty array of lineItems
+            for (let i = 0; i < this.lineItems.length; i++) {
+                subtotal = this.lineItems[i].subtotal();
+                total += subtotal + (subtotal * .06)
+            }
         }
         return total;
     }
@@ -188,7 +192,12 @@ $(document).ready(() => {
     // Delete Button Event
     $('body').on('click', 'table button', (e) => {
         cart.delElement($(e.target).val());
-    })
+        if($.contains($(e.target), $('#checkoutForm'))) {
+            if(cart.lineItems.length <= 0) {
+                showEmptyCartCheckout();
+            }
+        }
+    });
 
     // Hide Cart if you click the (x) button or continue shopping button
     $("body").on("click", "#cartDisplay img:first", (e) => {
@@ -267,10 +276,14 @@ $(document).ready(() => {
             $('#paymentInfo').show();
             $('#cashInfo #cashRequired').text(`Please pay ${cart.getTotal()}`);
         } else {
-            $('#emptyCartWarning').show();
-            $('#paymentInfo').hide();
+            showEmptyCartCheckout();
         }
         showCartImage(0);
+    }
+
+    const showEmptyCartCheckout = () => {
+        $('#emptyCartWarning').show();
+        $('#paymentInfo').hide();
     }
 
     // This will grab the cash required amount and the
