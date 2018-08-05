@@ -144,15 +144,13 @@ $(document).ready(() => {
         $('section#checkoutForm').hide();
         const $receipt = $('section#receiptForm');
         $receipt.show();
-        $receipt.prepend(`<h3>Thank You For Your Order</h3>`);
-        $receipt.append(`<div id='receiptCart'></div>`);
         cart.displayCart(document.getElementById('receiptCart'));
         $('#receiptCart button').hide();
         // Change the final message depending on whether paid with cash or credit
         if((e.target).parentNode.getAttribute('id')==='ccInfo') {
-            $receipt.append(`<p>You paid by credit card</p>`);
+            $('#paidMessage').text(`You paid by credit card`);
         } else if ($(e.target).parent().attr('id')==='cashInfo') {
-            $receipt.append(`You paid by cash and are due $${calculateChange()} in change.`);
+            $('#paidMessage').text(`You paid by cash and are due $${calculateChange()} in change.`);
         }
         // Once everything else is done, empty the cart
         cart.emptyCart();
