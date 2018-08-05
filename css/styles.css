@@ -446,15 +446,16 @@
 
 /* ----Checkout Cart Display CSS----*/
 
-#paymentInfo > #checkoutCart * {
+#checkoutCart * {
     border-collapse: collapse;
+    font-size: 1rem;
 }
 
-#checkoutCart tr:hover:not(:first-child):not(:last-child)
+#paymentInfo > div#checkoutCart tr:hover:not(:first-child):not(:last-child)
 {
     background-color: #f5f5f5;
 }
 
 #checkoutForm label {
-    font-size: 2em;
+    font-size: 1em;
 }

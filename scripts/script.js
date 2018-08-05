@@ -165,6 +165,9 @@ $(document).ready(() => {
     $("body").on("click", "#check", (e)=>{
         showCheckout();
     });
+    $('body').on('click', '#checkoutContinue', () => {
+        showStore();
+    });
 
     const showStore = () => {
         $('section#storePage').show();
