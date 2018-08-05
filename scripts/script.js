@@ -201,6 +201,9 @@ $(document).ready(() => {
         showCheckout();
     });
 
+    $("body").on("mouseleave", "#cart", (e)=>{
+        $(this).fadeTo("slow", 0.7);
+    })
     const showStore = () => {
         $('section#storePage').show();
         $('section#checkoutForm').hide();
