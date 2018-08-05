@@ -29,6 +29,25 @@
     display: none;
 }
 
+/* ----Receipt Page Display CSS----*/
+#receiptForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e9d9c6;
+}
+
+#recieptCart tr, #receiptForm td, #receiptForm th {
+    border: none;
+    border-bottom: 2px solid #B66741;
+    border-radius: 0px;
+    text-align: center;
+}
+
+#receiptForm #paidMessage{
+    font-size: 2em;
+}
+
 @media only screen and (max-width: 480px){
     nav {
         display: flex;
@@ -484,43 +503,43 @@
 
 
 
- #cartDisplay {
- 
-    /* background-color:#fff;
-    opacity: 0.6; */
-    width:90%;
-    max-width:400px;
-    border-radius:3px;
-    box-shadow:0px 0px 31px 1px rgba(0,0,0,0.3);
-    margin-bottom:40px;
-    position:fixed;
-    margin-right:auto;
-    margin-left:auto;
-    margin: 10px auto 0 auto;    
-    z-index: 5;
-    margin-left: 69%;
-    top:155px;
-    display:none;
-    border: 2px solid #8e7451;
-    border-radius: 5px;   
- }
+    #cartDisplay {
+    
+        /* background-color:#fff;
+        opacity: 0.6; */
+        width:90%;
+        max-width:400px;
+        border-radius:3px;
+        box-shadow:0px 0px 31px 1px rgba(0,0,0,0.3);
+        margin-bottom:40px;
+        position:fixed;
+        margin-right:auto;
+        margin-left:auto;
+        margin: 10px auto 0 auto;    
+        z-index: 5;
+        margin-left: 69%;
+        top:155px;
+        display:none;
+        border: 2px solid #8e7451;
+        border-radius: 5px;   
+    }
   
    #cartDisplay button{
-    background-color:  #B66741;
-    border-radius:5px;
-    color:#e9d9c6;
-    padding:3px;
-    margin:3px;
-  }
+        background-color:  #B66741;
+        border-radius:5px;
+        color:#e9d9c6;
+        padding:3px;
+        margin:3px;
+    }
   
    #cartDisplay img{
-    background-color: #fff;
-    width:20px;
-    height: 20px;
-    position:absolute;
-    top:5px;
-    right:5px
- }
+        background-color: #fff;
+        width:20px;
+        height: 20px;
+        position:absolute;
+        top:5px;
+        right:5px
+    }
 
     /* Checkout Cart Desktop */
     #checkoutForm {
@@ -574,6 +593,18 @@
         display: flex;
         flex-direction: row;
     }
+
+
+    #ccInfo {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5em;
+    }
+
+    #cashInfo {
+        font-size: 1.5em;
+    }
+
 }
 
 /* Main-content------------------- */
