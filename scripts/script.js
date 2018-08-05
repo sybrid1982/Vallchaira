@@ -291,18 +291,18 @@ $(document).ready(() => {
     });
 
     let item = [
-        new Item("The Seat of Iron", 1200, "description", 'newimages/fancy-chair.jpg'),
-        new Item("Oak Throne", 600, "description", 'newimages/hand-throne.jpg'),
-        new Item("The Golden serpant seat", 400, "description", 'newimages/small-wooden.jpg'),
-        new Item("The Watcher", 650, "description", 'newimages/viking-chair.jpg'),
-        new Item("The All Father", 1200, "description", 'newimages/wooden-throne.jpg'),
-        new Item("Wyvern Fury", 300, "description", 'newimages/simple-design.jpg'),
-        new Item("The Wolves Maw", 1500, "description", 'newimages/scary-chair.jpg'),
-        new Item("Muh Ladies Throne", 950, "description", 'newimages/metal-throne.jpg'),
-        new Item("Loki's Dream", 400, "description", 'newimages/loks-dream.jpg'),
-        new Item("Seat of Pain", 500, "description", 'newimages/iron-throne.jpg'),
-        new Item("Valkyrie's Kiss", 700, "description", 'newimages/carved-chair.jpg'),
-        new Item("Jormungander", 500, "description",'newimages/braided-wood.jpg')
+        new Item("The Seat of Iron", 1200, "createdd by 12 dawfs of nathgar, this seat offers only the best cushion for your push", 'newimages/fancy-chair.jpg'),
+        new Item("Oak Throne", 600, "The wood of this throne has been blessed by the moon goddess", 'newimages/hand-throne.jpg'),
+        new Item("The Golden serpant seat", 400, "This seat has been bitten by 12,000 serpent fangs, their venom was like melted gold", 'newimages/small-wooden.jpg'),
+        new Item("The Watcher", 650, "This throne watches over your dreams as you drift to rest from a long days battle", 'newimages/viking-chair.jpg'),
+        new Item("The All Father", 1200, "Carry we, who die in battle. Over land and sea, across the rainbow bridge too Vallhala. Odins waiting for me.", 'newimages/wooden-throne.jpg'),
+        new Item("Wyvern Fury", 300, "After the battle with the dragon, Hookfang. The only thing standing in the city of Ashtin was this  throne", 'newimages/simple-design.jpg'),
+        new Item("The Wolves Maw", 1500, "Only an Alpha may sit in this throne, the entire throne is crafted from rusted swords who have wronged the Wolf King", 'newimages/scary-chair.jpg'),
+        new Item("Muh Ladies Throne", 950, "This chair is as old and as mystrioues as time, passed down from kingdom to kingdom, legend says this seat shapes to the users butt", 'newimages/metal-throne.jpg'),
+        new Item("Loki's Dream", 400, "Binded from bones of frost elves, the skeleton has aged into it's elder state", 'newimages/loks-dream.jpg'),
+        new Item("Seat of Pain", 500, "A fitting gift for your ex, this one-ton block of aged metal will punish", 'newimages/iron-throne.jpg'),
+        new Item("Valkyrie's Kiss", 700, "Created from the remains of odins lost ship", 'newimages/carved-chair.jpg'),
+        new Item("Jormungander", 500, "Binded by vikings and shaped with a dragons scale, will be the topic of discussion at your next tavern social",'newimages/braided-wood.jpg')
     ];
 
     // When you click on a picture in the store, it will slide down to show the
