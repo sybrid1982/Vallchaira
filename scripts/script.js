@@ -82,9 +82,13 @@ class Cart {
     getTotal() {
         let total = 0;
         let subtotal = 0;
-        for (let i = 0; i < this.lineItems.length; i++) {
-            subtotal = this.lineItems[i].subtotal();
-            total += subtotal + (subtotal * .06)
+        // Confirm lineItems is not empty, else the total is zero
+        if(this.lineItems.length > 0) {
+            // Loop through the definitely not empty array of lineItems
+            for (let i = 0; i < this.lineItems.length; i++) {
+                subtotal = this.lineItems[i].subtotal();
+                total += subtotal + (subtotal * .06)
+            }
         }
         return total;
     }
@@ -144,6 +148,18 @@ $(document).ready(() => {
 
     // PLACE ORDER
     $('body').on('click', '#checkoutForm .placeOrder', (e) => {
+
+        // If they're paying cash, check if they've paid enough and if not,
+        // Warn them and let them know how much more they still owe
+        // Then abort the order
+        if ($(e.target).parent().attr('id')==='cashInfo') {
+            if(calculateChange() < 0) {
+                $('#warning').text(`Insufficent funds, you still owe $${calculateChange()*-1}.`).css('color', 'red');
+                return;
+            }
+        }
+        // Make sure the store and checkout are hidden
+
         $('section#storePage').hide();
         $('section#checkoutForm').hide();
         const $receipt = $('section#receiptForm');
@@ -177,8 +193,23 @@ $(document).ready(() => {
 
     // Delete Button Event
     $('body').on('click', 'table button', (e) => {
+        // If we're on the checkout form, and we delete an item, it might be
+        // the last and we need to show the empty cart display now
+        let checkoutForm = document.getElementById('checkoutForm');
+        // If this is true, then the delete button was pressed on the
+        // checkout page
+        if($.contains(checkoutForm, e.target)) {
+            // If cart.lineItems.length is 1, then when we delete it,
+            // the cart will be empty, and we need to display the
+            // empty cart message
+            if(cart.lineItems.length <= 1) {
+                showEmptyCartCheckout();
+            }
+        }
+        // Now that we've handled all the checkout page cart shenanigans,
+        // we can just delete the item
         cart.delElement($(e.target).val());
-    })
+    });
 
     // Hide Cart if you click the (x) button or continue shopping button
     $("body").on("click", "#cartDisplay img:first", (e) => {
@@ -257,10 +288,14 @@ $(document).ready(() => {
             $('#paymentInfo').show();
             $('#cashInfo #cashRequired').text(`Please pay ${cart.getTotal()}`);
         } else {
-            $('#emptyCartWarning').show();
-            $('#paymentInfo').hide();
+            showEmptyCartCheckout();
         }
         showCartImage(0);
+    }
+
+    const showEmptyCartCheckout = () => {
+        $('#emptyCartWarning').show();
+        $('#paymentInfo').hide();
     }
 
     // This will grab the cash required amount and the

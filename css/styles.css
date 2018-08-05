@@ -328,7 +328,7 @@
         padding:20px;
 
     }
-    }
+}
     
     
     
@@ -383,6 +383,7 @@
     .home a {
         color: #e9d9c6;
         font-family: 'Lato', sans-serif;
+        padding: 25px;
     }
 
     img {
@@ -396,6 +397,7 @@
         border: #e9d9c6 solid 10px;
         background: #a5a191;
         border-radius: 5px;
+        padding: 15px;
         margin: 40px;
     }
 
@@ -478,6 +480,7 @@
     .name {
         font-family: 'Fondamento', cursive;
         color: #B66741;
+        height: 3em;
     }
 
     #cart{
