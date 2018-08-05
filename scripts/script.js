@@ -64,8 +64,12 @@ class Cart {
         for (let i = 0; i < this.lineItems.length; i++) {
             subtotal = this.lineItems[i].subtotal();
             total += subtotal + (subtotal * .06)
-
+            // let thumb = (src = this.lineItems[i].item.name);
+            let img = '<a href"' + this.lineItems[i].item.picture + '"><img src="' + this.lineItems[i].item.picture + '"/></a>';
             cartdata += "<tr><td>" + this.lineItems[i].item.name + "</td><td>"+'$'+ + this.lineItems[i].item.price + "</td><td>" + this.lineItems[i].quantity + "</td><td>" +'$'+ + this.lineItems[i].subtotal() + "</td><td></td><td><button>Delete</button></td></tr>"
+
+           
+
         }
 
         cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
@@ -140,33 +144,19 @@ $(document).ready(() => {
 
     // PLACE ORDER
     $('body').on('click', '#checkoutForm .placeOrder', (e) => {
-        // If they're paying cash, check if they've paid enough and if not,
-        // Warn them and let them know how much more they still owe
-        // Then abort the order
-        if ($(e.target).parent().attr('id')==='cashInfo') {
-            if(calculateChange() < 0) {
-                $('#warning').text(`Insufficent funds, you still owe $${calculateChange()}.`).css('color', 'red');
-                return;
-            }
-        }
-        // Make sure the store and checkout are hidden
         $('section#storePage').hide();
         $('section#checkoutForm').hide();
-        // Get the receipt page and show it
         const $receipt = $('section#receiptForm');
         $receipt.show();
-        // Display the cart on the receipt
+        $receipt.prepend(`<h3>Thank You For Your Order</h3>`);
+        $receipt.append(`<div id='receiptCart'></div>`);
         cart.displayCart(document.getElementById('receiptCart'));
-        // Hide the buttons that are normally drawn on the cart display
         $('#receiptCart button').hide();
-        // Change the final message depending on whether paid with cash or credit
         if((e.target).parentNode.getAttribute('id')==='ccInfo') {
-            $('#paidMessage').text(`You paid by credit card`);
+            $receipt.append(`<p>You paid by credit card</p>`);
         } else if ($(e.target).parent().attr('id')==='cashInfo') {
-            $('#paidMessage').text(`You paid by cash and are due $${calculateChange()} in change.`);
+            $receipt.append(`You paid by cash and are due $${calculateChange()} in change.`);
         }
-        // Once everything else is done, empty the cart
-        cart.emptyCart();
     });
 
     // Hover on checkout cart table should change image
@@ -212,7 +202,7 @@ $(document).ready(() => {
     });
 
     $("body").on("mouseleave", "#cart", (e)=>{
-//        $(this).fadeTo("slow", 0.7);
+        $(this).fadeTo("slow", 0.7);
     })
     const showStore = () => {
         $('section#storePage').show();
@@ -291,18 +281,18 @@ $(document).ready(() => {
     });
 
     let item = [
-        new Item("The Seat of Iron", 1200, "createdd by 12 dawfs of nathgar, this seat offers only the best cushion for your push", 'newimages/fancy-chair.jpg'),
+        new Item("The Seat of Iron", 1200, "Created by 12 Dwarfs of Nathgar, this seat offers only the best cushion for your push", 'newimages/fancy-chair.jpg'),
         new Item("Oak Throne", 600, "The wood of this throne has been blessed by the moon goddess", 'newimages/hand-throne.jpg'),
-        new Item("The Golden serpant seat", 400, "This seat has been bitten by 12,000 serpent fangs, their venom was like melted gold", 'newimages/small-wooden.jpg'),
-        new Item("The Watcher", 650, "This throne watches over your dreams as you drift to rest from a long days battle", 'newimages/viking-chair.jpg'),
-        new Item("The All Father", 1200, "Carry we, who die in battle. Over land and sea, across the rainbow bridge too Vallhala. Odins waiting for me.", 'newimages/wooden-throne.jpg'),
+        new Item("The Golden Serpant Seat", 400, "This seat has been bitten by 12,000 serpent fangs, their venom was like melted gold", 'newimages/small-wooden.jpg'),
+        new Item("The Watcher", 650, "This throne watches over your dreams as you drift to rest after a long days battle", 'newimages/viking-chair.jpg'),
+        new Item("The All Father", 1200, "Carry we, who die in battle. Over land and sea, across the rainbow bridge to Vallhala. Odins waiting for me.", 'newimages/wooden-throne.jpg'),
         new Item("Wyvern Fury", 300, "After the battle with the dragon, Hookfang. The only thing standing in the city of Ashtin was this  throne", 'newimages/simple-design.jpg'),
         new Item("The Wolves Maw", 1500, "Only an Alpha may sit in this throne, the entire throne is crafted from rusted swords who have wronged the Wolf King", 'newimages/scary-chair.jpg'),
         new Item("Muh Ladies Throne", 950, "This chair is as old and as mystrioues as time, passed down from kingdom to kingdom, legend says this seat shapes to the users butt", 'newimages/metal-throne.jpg'),
         new Item("Loki's Dream", 400, "Binded from bones of frost elves, the skeleton has aged into it's elder state", 'newimages/loks-dream.jpg'),
         new Item("Seat of Pain", 500, "A fitting gift for your ex, this one-ton block of aged metal will punish", 'newimages/iron-throne.jpg'),
-        new Item("Valkyrie's Kiss", 700, "Created from the remains of odins lost ship", 'newimages/carved-chair.jpg'),
-        new Item("Jormungander", 500, "Binded by vikings and shaped with a dragons scale, will be the topic of discussion at your next tavern social",'newimages/braided-wood.jpg')
+        new Item("Valkyrie's Kiss", 700, "Created from the remains of Odins lost ship", 'newimages/carved-chair.jpg'),
+        new Item("Jormungander", 500, "Binded by Vikings and shaped with a Dragons scale, will be the topic of discussion at your next tavern social",'newimages/braided-wood.jpg')
     ];
 
     // When you click on a picture in the store, it will slide down to show the
