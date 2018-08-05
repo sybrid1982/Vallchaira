@@ -140,6 +140,13 @@ $(document).ready(() => {
 
     // PLACE ORDER
     $('body').on('click', '#checkoutForm .placeOrder', (e) => {
+        if ($(e.target).parent().attr('id')==='cashInfo') {
+            if(calculateChange() < 0) {
+                $('#warning').text(`Insufficent funds, you still owe $${calculateChange()}.`).css('color', 'red');
+                return;
+            }
+        }
+
         $('section#storePage').hide();
         $('section#checkoutForm').hide();
         const $receipt = $('section#receiptForm');
