@@ -191,12 +191,22 @@ $(document).ready(() => {
 
     // Delete Button Event
     $('body').on('click', 'table button', (e) => {
-        cart.delElement($(e.target).val());
-        if($.contains($(e.target), $('#checkoutForm'))) {
-            if(cart.lineItems.length <= 0) {
+        // If we're on the checkout form, and we delete an item, it might be
+        // the last and we need to show the empty cart display now
+        let checkoutForm = document.getElementById('checkoutForm');
+        // If this is true, then the delete button was pressed on the
+        // checkout page
+        if($.contains(checkoutForm, e.target)) {
+            // If cart.lineItems.length is 1, then when we delete it,
+            // the cart will be empty, and we need to display the
+            // empty cart message
+            if(cart.lineItems.length <= 1) {
                 showEmptyCartCheckout();
             }
         }
+        // Now that we've handled all the checkout page cart shenanigans,
+        // we can just delete the item
+        cart.delElement($(e.target).val());
     });
 
     // Hide Cart if you click the (x) button or continue shopping button
