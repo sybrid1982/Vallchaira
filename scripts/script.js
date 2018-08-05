@@ -140,18 +140,24 @@ $(document).ready(() => {
 
     // PLACE ORDER
     $('body').on('click', '#checkoutForm .placeOrder', (e) => {
+        // If they're paying cash, check if they've paid enough and if not,
+        // Warn them and let them know how much more they still owe
+        // Then abort the order
         if ($(e.target).parent().attr('id')==='cashInfo') {
             if(calculateChange() < 0) {
                 $('#warning').text(`Insufficent funds, you still owe $${calculateChange()}.`).css('color', 'red');
                 return;
             }
         }
-
+        // Make sure the store and checkout are hidden
         $('section#storePage').hide();
         $('section#checkoutForm').hide();
+        // Get the receipt page and show it
         const $receipt = $('section#receiptForm');
         $receipt.show();
+        // Display the cart on the receipt
         cart.displayCart(document.getElementById('receiptCart'));
+        // Hide the buttons that are normally drawn on the cart display
         $('#receiptCart button').hide();
         // Change the final message depending on whether paid with cash or credit
         if((e.target).parentNode.getAttribute('id')==='ccInfo') {
