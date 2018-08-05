@@ -45,15 +45,17 @@ class Cart {
         if (!newLineItem) {
             this.lineItems.push(new LineItem(item, quantity));
         }
-        this.displayCart()
+        this.displayCart(document.getElementById('cart'));
     }
     delElement(i) {
         this.lineItems.splice(i, 1);
 
-        this.displayCart()
+        this.displayCart(document.getElementById('cart'));
+        this.displayCart(document.getElementById('checkoutCart'));
+
     }
 
-    displayCart() {
+    displayCart(targetElement) {
         let cartdata = '<table><tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>subTotal</th><th>Total</th></tr>';
 
         let subtotal = 0;
@@ -70,9 +72,9 @@ class Cart {
 
         }
 
-       cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
+        cartdata += '<tr><td></td><td></td><td></td></td><td></td><td>'+'$'+ + total + '</td></tr></table>'
 
-        document.getElementById('cart').innerHTML = cartdata
+        targetElement.innerHTML = cartdata;
 
     }
 
@@ -85,6 +87,17 @@ class Cart {
             total += subtotal + (subtotal * .06)
         }
         return total;
+    }
+
+    emptyCart(){
+        if(this.lineItems.length > 0) {
+            while(this.lineItems.length > 0) {
+                this.lineItems.pop();
+            }
+        }
+        this.displayCart(document.getElementById('cart'));
+        this.displayCart(document.getElementById('checkoutCart'));
+
     }
 
 }
@@ -134,16 +147,33 @@ $(document).ready(() => {
         $('section#storePage').hide();
         $('section#checkoutForm').hide();
         const $receipt = $('section#receiptForm');
-        $receipt.append(`<h3>Thank You For Your Order</h3>`);
-        $receipt.append(`<div class='cart'></div>`);
-        cart.displayCart();
-        console.log($(e.target).parent());
+        $receipt.show();
+        $receipt.prepend(`<h3>Thank You For Your Order</h3>`);
+        $receipt.append(`<div id='receiptCart'></div>`);
+        cart.displayCart(document.getElementById('receiptCart'));
+        $('#receiptCart button').hide();
         if((e.target).parentNode.getAttribute('id')==='ccInfo') {
             $receipt.append(`<p>You paid by credit card</p>`);
         } else if ($(e.target).parent().attr('id')==='cashInfo') {
             $receipt.append(`You paid by cash and are due $${calculateChange()} in change.`);
         }
     });
+
+    // Hover on checkout cart table should change image
+    $('body').on('mouseenter', '#checkoutForm tr', (e)=> {
+        // Get the full table
+        let parentTable = e.target.parentElement.parentElement;
+        // Make sure we're mousing over a row which is neither the total or the header
+        if(e.target.tagName.toUpperCase() === 'TD' && parentTable.lastChild !== e.target.parentElement){
+            let cartIndex = Array.from(parentTable.children).indexOf(e.target.parentElement);
+            // We actually need to remove one from cartIndex since the header 
+            // is the first child at index 0 and the first cart item in it is index 1
+            // while the cart's first index is at 0 and not 1
+            cartIndex -= 1;
+            // Pass that number in to showCartImage
+            showCartImage(cartIndex);
+        }
+    }); 
 
     // Delete Button Event
     $('body').on('click', 'table button', (e) => {
@@ -153,14 +183,21 @@ $(document).ready(() => {
     // Hide Cart if you click the (x) button or continue shopping button
     $("body").on("click", "#cartDisplay img:first", (e) => {
         $("#cartDisplay").hide();
-    
     })
+    // Same, if you click on 'continue shopping'
     $("body").on("click", "#continue", (e) => {
         $("#cartDisplay").hide();
-    
     })
     // If you checkout, hide the cart and show the checkout page
     $("body").on("click", "#check", (e)=>{
+        showCheckout();
+    });
+    $('body').on('click', '#checkoutContinue', () => {
+        showStore();
+    });
+    // Clear the cart
+    $('body').on('click', '#emptyCart', () => {
+        cart.emptyCart();
         showCheckout();
     });
 
@@ -178,6 +215,23 @@ $(document).ready(() => {
         $('nav .cart').show();
         // Show the home button
         $('nav .home').hide();
+        // Hide the receipt page
+        $('#receiptForm').hide();
+    }
+
+    const showCartImage = (index) => {
+        // If we pass an index out of range, just grab the first item image
+        if(index > cart.lineItems.length) {
+            index = 0;
+        }
+        // If we have anything in the cart, then grab the image at the index
+        if(cart.lineItems.length > 0) {
+            $('#cartContainer img').show();
+            $('#cartContainer img').eq(0).prop('src', cart.lineItems[index].item.picture);
+        } else {
+            // The cart is empty, so hide the image altogether
+            $('#cartContainer img').hide();
+        }
     }
 
     const showCheckout = () => {
@@ -193,6 +247,10 @@ $(document).ready(() => {
         $('nav .cart').hide();
         // Show the home button
         $('nav .home').show();
+        // Hide the receipt form
+        $('#receiptForm').hide();
+
+        cart.displayCart(document.getElementById('checkoutCart'));
 
         if(cart.lineItems.length > 0) {
             $('#emptyCartWarning').hide();
@@ -202,6 +260,7 @@ $(document).ready(() => {
             $('#emptyCartWarning').show();
             $('#paymentInfo').hide();
         }
+        showCartImage(0);
     }
 
     // This will grab the cash required amount and the
@@ -236,7 +295,8 @@ $(document).ready(() => {
         new Item("Jormungander", 500, "description",'newimages/braided-wood.jpg')
     ];
 
-   
+    // When you click on a picture in the store, it will slide down to show the
+    // description and price, or slide back up to hide it if necessary
     $('body').on('click', '#storeProducts .picture', (e) => {
     // for (let i =0; i < item.length; i++)
     // let index = parseInt($(e.target).val());
@@ -270,12 +330,6 @@ $(document).ready(() => {
    
 
 //loops through item array to display all 12 items including name, price, description, and image
-
-
-
-
-
-
    for (let i =0; i < item.length; i++) {
    $("#storeProducts").append(
        ` <section class='wrapper'>
@@ -288,8 +342,6 @@ $(document).ready(() => {
 
         </section>`)
     }
-
-
 
     showStore();
 });
