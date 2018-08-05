@@ -474,7 +474,7 @@
     .wrapper {
         background: white;
         margin: 20px;
-       padding: 20px;
+        padding: 20px;
         border-radius: 10px;
         display: flex;
         width: 20%; 
@@ -486,6 +486,7 @@
     .name {
         font-family: 'Fondamento', cursive;
         color: #B66741;
+        height: 3em;
     }
 
     #cart{
