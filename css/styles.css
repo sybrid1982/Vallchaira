@@ -499,17 +499,19 @@
 
 
     th, td, tr{
-        border: 1px solid;
+        
         border-radius: 5px;
         border-color: #8e7451;
+        text-align: center;
+        border-bottom: 1px solid #B66741 ;
     }
 
 
 
     #cartDisplay {
     
-        /* background-color:#fff;
-        opacity: 0.6; */
+       
+        
         width:90%;
         max-width:400px;
         border-radius:3px;
