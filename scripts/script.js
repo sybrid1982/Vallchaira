@@ -89,6 +89,17 @@ class Cart {
         return total;
     }
 
+    emptyCart(){
+        if(this.lineItems.length > 0) {
+            while(this.lineItems.length > 0) {
+                this.lineItems.pop();
+            }
+        }
+        this.displayCart(document.getElementById('cart'));
+        this.displayCart(document.getElementById('checkoutCart'));
+
+    }
+
 }
 
 $(document).ready(() => {
@@ -167,6 +178,11 @@ $(document).ready(() => {
     });
     $('body').on('click', '#checkoutContinue', () => {
         showStore();
+    });
+    // Clear the cart
+    $('body').on('click', '#emptyCart', () => {
+        cart.emptyCart();
+        showCheckout();
     });
 
     const showStore = () => {

@@ -13,6 +13,14 @@
     box-shadow:0px 0px 31px 1px rgba(0,0,0,0.3);
 }
 
+#cartDisplay button, #checkoutForm button{
+    background-color:  #B66741;
+    border-radius:5px;
+    color:#e9d9c6;
+    padding:3px;
+    margin:3px;
+  }
+
 #paymentInfo > div#checkoutCart tr:hover:not(:first-child):not(:last-child)
 {
     background-color: #e9d9c6;
@@ -239,13 +247,7 @@
         display:none;
         border: 2px solid #8e7451;
     }
-    #cartDisplay button{
-      background-color:  #B66741;
-      border-radius:5px;
-      color:#e9d9c6;
-      padding:3px;
-      margin:3px;
-    }
+    
 
     #cartDisplay #X{
         position:relative;
@@ -510,6 +512,16 @@
     }
 
     /* Checkout Cart Desktop */
+    #checkoutForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #checkoutForm > button {
+        width: 20%;
+    }
+
     #checkoutCart * {
         border-collapse: collapse;
         font-size: 1.4rem;
