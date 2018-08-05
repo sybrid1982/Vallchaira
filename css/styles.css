@@ -328,7 +328,7 @@
         padding:20px;
 
     }
-    }
+}
     
     
     
@@ -396,6 +396,7 @@
         border: #e9d9c6 solid 10px;
         background: #a5a191;
         border-radius: 5px;
+        padding: 15px;
         margin: 40px;
     }
 
