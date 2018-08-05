@@ -593,7 +593,10 @@
     border-top: #8e7451 solid 10px;
     box-shadow: 5px 10px 18px black;
 }
-
+.description, .price{
+    color: #B66741;
+    font-size: 18px;
+}
 /* Items and their propertys -------------------------*/
 
 .name {
