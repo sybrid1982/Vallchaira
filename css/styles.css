@@ -29,6 +29,25 @@
     display: none;
 }
 
+/* ----Receipt Page Display CSS----*/
+#receiptForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e9d9c6;
+}
+
+#recieptCart tr, #receiptForm td, #receiptForm th {
+    border: none;
+    border-bottom: 2px solid #B66741;
+    border-radius: 0px;
+    text-align: center;
+}
+
+#receiptForm #paidMessage{
+    font-size: 2em;
+}
+
 @media only screen and (max-width: 480px){
     nav {
         display: flex;
