@@ -329,7 +329,6 @@ $(document).ready(() => {
     });
 
     let item = [
-
         new Item("The Seat of Iron", 1200, "Created by 12 Dwarfs of Nathgar, this seat offers only the best cushion for your push", 'newimages/fancy-chair.jpg'),
         new Item("Oak Throne", 600, "The wood of this throne has been blessed by the moon goddess", 'newimages/hand-throne.jpg'),
         new Item("The Golden Serpant Seat", 400, "This seat has been bitten by 12,000 serpent fangs, their venom was like melted gold", 'newimages/small-wooden.jpg'),
@@ -381,14 +380,13 @@ $(document).ready(() => {
 //loops through item array to display all 12 items including name, price, description, and image
    for (let i =0; i < item.length; i++) {
    $("#storeProducts").append(
-
        ` <section class='wrapper'>
             <p class="name">${item[i].name}</p>
 
             <p class="price ${i}">$${item[i].price}</p>
             <p class="description ${i}">${item[i].description}</p>
             <img class="picture ${i}"  src = '${item[i].picture}'>
-            <button id="add" class="cart-button" value='${[i]}'>Add To Cart</button>
+            <button id="add" value='${[i]}'>Add To Cart</button>
 
         </section>`)
     }
