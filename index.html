@@ -18,19 +18,21 @@
 
 
     <nav>
+      <section class="left">
         <div class="logo">Vallchaira</div>
-        <div class="pic">
+        <div class="pic"></div>
+      </section>
             
-            
-        </div>
-        <div class="cart">
-            <a href="#">
-                <img id="haul" src="images/shopping-cart.png">
-            </a>
-        </div>
-        <div class="home">
-            <!-- <a>Products</a> -->
-        </div>
+      <section class="right">
+          <div class="cart">
+              <a href="#">
+                  <img id="haul" src="images/shopping-cart.png">
+              </a>
+          </div>
+          <div class="home">
+                <a href='#'>Products</a>
+          </div>
+      </section>
     </nav>
 
 
@@ -38,9 +40,8 @@
             <h1>Welcome to Vallchaira</h1>
             <p>For over 4,000 years, Our thrones have been hand created from the finest of Oak and steel. Forged at Black-rock Peak, we insure that no matter where you rest your rump you will always feel like a King no matter where you rest your haul.</p>
             
-            <img src="images/Badger_Logo-03.png" class="bager">
-            
-        </div>
+            <img src="images/Badger_Logo-03.png" class="badger pic">
+     </div>
 
 
     <section id='storePage'>
@@ -50,10 +51,15 @@
 
     <section id='checkoutForm'>
         <h3 class="checkout-head">Checkout</h3>
-        <a href="index.html" class="button">Continue Shopping</a>
-        <button type="reset" class="emptyCartButton">Empty Cart</button>
+        <button id="checkoutContinue">Continue Shopping</button>
+        <button id='emptyCart'>Empty Cart</button>
+
         <p id='emptyCartWarning'>Your cart is currently empty</p>
         <section id='paymentInfo'>
+            <div id='cartContainer'>
+                <div id='checkoutCart'></div>
+                <img src=''>
+            </div>
             <input type="radio" name='paymentOption' id="cash">
             <label for="cash">Cash</label>
             <input type="radio" name='paymentOption' id="creditCard">
@@ -87,10 +93,26 @@
         </section>
     </section>
 
-    <section id='receiptForm'>
-            <button type='submit'>Place Order</button>
+    <section id="bForm">
+            <section id="close">
+                    <img id="X" src="newimages/X1.png"/>
+                </section>
+            
+        <form id="bDis">
+                <h2>Hmmm... Very Observant, A Warrior Such As Yourself May Be of Value </h2>
+            <h4 id="hmmm">Reveal Yourself To Recieve Future Badger Disconts From Vallchaira</h4>
+            <label for="bName">Name</label>
+            <input type="txt" id="bName" placeholder="Name">
+            <label for="bMail">House</label>
+            <input type="text" id="bMail" placeholder = "E-Mail@.com">
+            <button type="button" id="bad">Submit</button>
         </form>
+    </section>
 
+    <section id='receiptForm'>
+        <h3 id='thankYouMessage'>Thank you for your order!</h3>
+        <div id='receiptCart'></div>
+        <div id='paidMessage'></div>
     </section>
 
     <section id="cartDisplay">
