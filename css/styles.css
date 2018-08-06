@@ -268,22 +268,17 @@
     
 
     #cartDisplay #X{
-        position:relative;
-        margin-left:380px;
-        background-color:#B66741;
-        border-radius:5px;
-        color:#e9d9c6;
-    
-      
+        margin-left: 380px;
+        background-color: #B66741;
+        border-radius: 5px;
+        color: #e9d9c6;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 20px;
+        right: 20px      
     }
-    
-    #cartDisplay img{
-    
-        width:20px;
-        position:absolute;
-        top:20px;
-        right:20px
-    }
+
     
     #checkoutForm{
         font-family:'Lato', sans-serif;
