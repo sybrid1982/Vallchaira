@@ -196,18 +196,18 @@ $(document).ready(() => {
     });
 
     let item = [
-        new Item("The Seat of Iron", 1200, "description", 'newimages/fancy-chair.jpg'),
-        new Item("Oak Throne", 600, "description", 'newimages/hand-throne.jpg'),
-        new Item("The Golden serpant seat", 400, "description", 'newimages/small-wooden.jpg'),
-        new Item("The Watcher", 650, "description", 'newimages/viking-chair.jpg'),
-        new Item("The All Father", 1200, "description", 'newimages/wooden-throne.jpg'),
-        new Item("Wyvern Fury", 300, "description", 'newimages/simple-design.jpg'),
-        new Item("The Wolves Maw", 1500, "description", 'newimages/scary-chair.jpg'),
-        new Item("Muh Ladies Throne", 950, "description", 'newimages/metal-throne.jpg'),
-        new Item("Loki's Dream", 400, "description", 'newimages/loks-dream.jpg'),
+        new Item("The Seat of Iron", 1200, "Created by 12 dawfs of nathgar, this seat offers only the best cushion for your pushin.", 'newimages/fancy-chair.jpg'),
+        new Item("Oak Throne", 600, "The wood of this throne has been blessed by the moonlight god, Maani.", 'newimages/hand-throne.jpg'),
+        new Item("Golden serpant seat", 400, "This seat has been bitten by 12,000 serpent fangs, their venom was like melted the bark into what you see now.", 'newimages/small-wooden.jpg'),
+        new Item("The Watcher", 650, "This throne watches over your dreams as you rest from a long days battle. The twin Valkyers offer tranquility to the user", 'newimages/viking-chair.jpg'),
+        new Item("The All Father", 1200, "Carry we, who die in battle. Over land and sea, across the rainbow bridge too Vallhala. Odin's waiting for me..", 'newimages/wooden-throne.jpg'),
+        new Item("Wyvern Fury", 300, "After the battle with the fabled dragon, Hookfang. The only thing standing in the city of Ashtin was this throne, struck by the beast breath.", 'newimages/simple-design.jpg'),
+        new Item("The Wolves Maw", 1500, "Only an alpha sit in this throne, The beast of fury will haunt the user with thoughts of fangs and claw.", 'newimages/scary-chair.jpg'),
+        new Item("Muh Ladies Throne", 950, "This chair is as old and as mysterious as time. Passed down from kingdom to kingdom, legend says this seat shapes to users rump for Maximum comfort.", 'newimages/metal-throne.jpg'),
+        new Item("Loki's Dream", 400, "Binded form bones of frost elves, the skeleton has aged into it's elder state. The runes of the damned quake with every rock of this chair.", 'newimages/loks-dream.jpg'),
         new Item("Seat of Pain", 500, "description", 'newimages/iron-throne.jpg'),
-        new Item("Valkyrie's Kiss", 700, "description", 'newimages/carved-chair.jpg'),
-        new Item("Jormungander", 500, "description",'newimages/braided-wood.jpg')
+        new Item("Valkyrie's Kiss", 700, "Created from the remains of odins lost ship.", 'newimages/carved-chair.jpg'),
+        new Item("Jormungander", 500, "Binded by vikings and shaped with a dragons scale, will be the topic of discussion at your next tavern social.",'newimages/braided-wood.jpg')
     ];
 
    
@@ -252,13 +252,13 @@ $(document).ready(() => {
 
    for (let i =0; i < item.length; i++) {
    $("#storeProducts").append(
-       ` <section>
+       ` <section class="wrapper">
             <p class="name">${item[i].name}</p>
 
             <p class="price ${i}">$${item[i].price}</p>
             <p class="description ${i}">${item[i].description}</p>
             <img class="picture ${i}"  src = '${item[i].picture}'>
-            <button id="add" value='${[i]}'>Add To Cart</button>
+            <button id="add" class="cart-button" value='${[i]}'>Add To Cart</button>
 
         </section>`)
     }
