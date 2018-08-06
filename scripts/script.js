@@ -109,6 +109,7 @@ class Cart {
 $(document).ready(() => {
     $('#ccInfo').hide();
     $('#cashInfo').hide();
+    $('#bForm').hide();
 
     let cart = new Cart();
 
@@ -232,9 +233,22 @@ $(document).ready(() => {
         showCheckout();
     });
 
-    $("body").on("mouseleave", "#cart", (e)=>{
-        $(this).fadeTo("slow", 0.7);
+    $("body").on("click", ".pic", (e)=>{
+        $("#bForm").show();
+    });
+
+    // Hide badgerForm if you click the (x) button
+    $("body").on("click", "#bForm img:first", (e) => {
+        $("#bForm").hide();
+    });
+    $("body").on("click", "#bad", (e)=>{
+        $("#bForm").hide();
+    });
+
+    $("body").on("click", ".logo", (e)=>{
+        showStore();
     })
+
     const showStore = () => {
         $('section#storePage').show();
         $('section#checkoutForm').hide();
