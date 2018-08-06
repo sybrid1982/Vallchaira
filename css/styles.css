@@ -1,5 +1,72 @@
 /* ----Checkout Cart Display CSS----*/
 
+.logo {
+    font-size: 60px;
+    padding-left: 20px;
+    font-family: 'Fondamento', cursive;
+    text-shadow: 5px 5px 10px white;
+    position: relative;
+    left: 30px;
+}
+  
+.cart {
+    font-size: 25px;
+    line-height: 45px;
+    padding-right: 20px;
+}
+
+.cart img {
+       height:70%;
+       width:70%;
+}
+
+.pic img{
+    height:auto;
+    width:50px;  
+}
+
+
+
+.home a {
+    color: #e9d9c6;
+    font-family: 'Lato', sans-serif;
+}
+
+ img {
+    height:70%;
+    width:100%;
+}
+
+/* Welcome message ------------------------*/
+.welcome-block {
+    color: #e9d9c6;
+    border: #e9d9c6 solid 10px;
+    height: 70%;
+    background: #a5a191;
+    border-radius: 5px;
+    margin: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 100px;
+    margin-top: 20px;
+    text-shadow: 10px 10px 5px gray;
+    font-family: 'Fondamento', cursive;
+}
+
+p {
+    font-size: 35px;
+    margin-top: 20px;
+    font-family: 'Lato', sans-serif;
+}
+
+.bager {
+    margin-top: 30px;
+    height: 100px;
+    width: 100px;
+}
+
 #checkoutCart * {
     border-collapse: collapse;
     font-size: .9rem;
@@ -370,11 +437,53 @@
     color: #B66741;
 }
 
+
+th, td, tr{
+    border: 1px solid;
+    border-color: black;
+    border-radius: 2px;
+    padding: 3px;
+}
+
+#continue {
+    /* height: 30px; */
+    width: 110px;
+    margin: 10px;
+    background: #8e7451 ;
+}
+#continue:hover {
+    background: #e9d9c6;
+
 h4{
     color: #1d1e1d;
 }
 
+#check {
+   height: 30px;
+   background: #8e7451 ;
+}
 
+#check:hover {
+    background: #e9d9c6 ;
+}
+
+#cartDisplay {
+    border-radius: 10px;
+    background-color:#fff;
+    width:90%;
+    max-width:400px;
+    border-radius:3px;
+    
+    box-shadow: 0px 0px 30px 5px black;
+    margin-bottom:40px;
+    position:absolute;
+    z-index: 5;
+    margin-left: 40%;
+    top:155px;
+    padding: 20px;
+    /* border: 5px solid #8e7451; */
+  }
+  
 #bForm img{
     background-color: #fff;
     width:20px;
@@ -769,6 +878,82 @@ h4{
 .name {
     font-family: 'Fondamento', cursive;
     color: #B66741;
+    margin: 10px;
+}
+
+.price {
+    color: #B66741;
+}
+
+
+.cart-button {
+    height: 70px;
+    background: #b66741;
+    font-family: 'Fondamento', cursive;
+    font-size: 18px;
+}
+
+.cart-button:hover {
+    background: #e9d9c6;
+}
+
+.description {
+    font-size: 40px;
+    
+}
+
+.cart {
+    width: 90px;
+    height: 90px;
+}
+
+
+
+#haul {
+    position: relative;
+    left: 520px;
+}
+
+.picture {
+    cursor: pointer;
+}
+
+/* check out form --------------*/
+
+#checkoutForm {
+    text-align: center;
+    border: solid 10px white;
+    margin: 40px;
+    padding: 20px;
+    background: #b66741;
+    border-radius: 5px;
+}
+
+.checkout-head {
+    font-size: 60px;
+    font-family: 'Fondamento', cursive;
+    color: #e9d9c6;
+    text-shadow: 5px 8px 5px black;
+}
+
+.button {
+    margin: 10px;
+    font-family: 'Fondamento', cursive;
+    font-size: 20px
+}
+
+.emptyCartButton {
+    height: 30px;
+    width: 110px;
+    border-radius: 10px;
+    /* background: #8e7451; */
+}
+.emptyCartButton:hover {
+    background: #e9d9c6;
+}
+
+#paymentInfo {
+    background: #e9d9c6; 
 }
 
 #paymentInfo > div#checkoutCart tr:hover:not(:first-child):not(:last-child)
