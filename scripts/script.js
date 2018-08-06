@@ -172,6 +172,7 @@ $(document).ready(() => {
         } else if ($(e.target).parent().attr('id')==='cashInfo') {
             $('#paidMessage').text(`You paid by cash and are due $${calculateChange()} in change.`);
         }
+        cart.emptyCart();
     });
 
     // Hover on checkout cart table should change image
